@@ -1,206 +1,295 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KASSI Koua Gerard | IT Local & Django Dev</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <style>
-        :root {
-            --brand-blue: #0052FF;
-            --dark-navy: #0A192F;
-            --white: #FFFFFF;
-            --bg-gray: #F4F7FA;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KASSI Koua Gerard | IT Local Technicien</title>
 
-        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-gray);
-            color: var(--dark-navy);
-            line-height: 1.6;
-        }
+<style>
+:root {
+    --brand-blue: #0052FF;
+    --dark-navy: #0A192F;
+    --light-slate: #8892B0;
+    --white: #FFFFFF;
+    --bg-gray: #F4F7FA;
+}
 
-        /* NAVIGATION AVEC LOGO AGRANDI */
-        nav {
-            position: fixed;
-            top: 0; width: 100%;
-            height: 110px; /* Hauteur augmentée pour le logo */
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 8%;
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            border-bottom: 2px solid var(--brand-blue);
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
 
-        .logo-box img {
-            height: 85px; /* TAILLE DU LOGO AUGMENTÉE */
-            width: auto;
-            object-fit: contain;
-        }
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-gray);
+    color: var(--dark-navy);
+    line-height: 1.6;
+}
 
-        .nav-links { display: flex; list-style: none; }
-        .nav-links li { margin-left: 35px; }
-        .nav-links a { 
-            text-decoration: none; 
-            color: var(--dark-navy); 
-            font-weight: 700; 
-            font-size: 0.9rem;
-            text-transform: uppercase;
-        }
+/* NAVIGATION */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 8%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    border-bottom: 1px solid #e0e0e0;
+}
 
-        /* HERO SECTION */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 0 8%;
-            background: linear-gradient(135deg, #fff 60%, var(--brand-blue) 60%);
-        }
+.logo-box img {
+    height: 80px;
+    width: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
 
-        .hero-text h1 { font-size: 3.5rem; color: var(--dark-navy); }
-        .hero-text h2 { font-size: 1.8rem; color: var(--brand-blue); margin: 15px 0; }
-        
-        .badge-it {
-            display: inline-block;
-            background: var(--dark-navy);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-weight: bold;
-            margin-top: 10px;
-        }
+.logo-box img:hover {
+    transform: scale(1.05);
+}
 
-        /* BENTO GRID */
-        section { padding: 100px 8%; }
-        .title-main { font-size: 2.2rem; margin-bottom: 50px; border-left: 8px solid var(--brand-blue); padding-left: 20px; }
+.nav-links {
+    display: flex;
+    list-style: none;
+}
 
-        .bento-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
+.nav-links li {
+    margin-left: 35px;
+}
 
-        .bento-card {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
+.nav-links a {
+    text-decoration: none;
+    color: var(--dark-navy);
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+}
 
-        .wide { grid-column: span 2; }
-        .highlight { border: 2px solid var(--brand-blue); }
+.nav-links a:hover {
+    color: var(--brand-blue);
+}
 
-        .tag { 
-            display: inline-block;
-            background: #eef2ff; 
-            color: var(--brand-blue); 
-            padding: 5px 12px; 
-            border-radius: 4px; 
-            font-size: 0.75rem; 
-            font-weight: 800;
-            margin: 4px;
-        }
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    left: 0;
+    bottom: -5px;
+    background: var(--brand-blue);
+    transition: width 0.3s ease;
+}
 
-        footer { background: var(--dark-navy); color: white; padding: 40px; text-align: center; }
+.nav-links a:hover::after {
+    width: 100%;
+}
 
-        @media (max-width: 992px) { .bento-grid { grid-template-columns: 1fr; } .wide { grid-column: span 1; } }
-    </style>
+/* HERO */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 0 8%;
+    background: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)),
+    url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+}
+
+.hero-text h1 {
+    font-size: 4rem;
+    margin-bottom: 10px;
+}
+
+.hero-text h2 {
+    font-size: 1.8rem;
+    color: var(--brand-blue);
+    font-weight: 400;
+    margin-bottom: 25px;
+}
+
+.stats-banner {
+    display: inline-flex;
+    background: var(--dark-navy);
+    color: white;
+    padding: 15px 25px;
+    border-radius: 8px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+/* SECTIONS */
+section {
+    padding: 120px 8%;
+    scroll-margin-top: 120px;
+}
+
+.title-main {
+    font-size: 2.2rem;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.title-main::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--brand-blue);
+    margin-top: 10px;
+}
+
+/* GRID */
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.bento-card {
+    background: white;
+    padding: 35px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    transition: 0.3s;
+}
+
+.bento-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+}
+
+.featured {
+    grid-column: span 2;
+    border-top: 5px solid var(--brand-blue);
+}
+
+.bento-card h3 {
+    color: var(--brand-blue);
+    margin-bottom: 15px;
+}
+
+.bento-card ul {
+    list-style: none;
+}
+
+.bento-card li {
+    margin-bottom: 12px;
+    padding-left: 20px;
+    position: relative;
+    font-size: 0.95rem;
+}
+
+.bento-card li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--brand-blue);
+}
+
+/* TAGS */
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.tag {
+    background: #f0f4ff;
+    color: #3b66f5;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+/* FOOTER */
+footer {
+    background: var(--dark-navy);
+    color: white;
+    padding: 60px 8%;
+    text-align: center;
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+    .bento-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .featured {
+        grid-column: span 1;
+    }
+
+    .hero-text h1 {
+        font-size: 2.5rem;
+    }
+
+    nav {
+        height: 80px;
+    }
+
+    .logo-box img {
+        height: 60px;
+    }
+}
+</style>
 </head>
+
 <body>
 
-    <nav>
-        <div class="logo-box">
-            <img src="logo.png" alt="KASSI Brand Logo">
+<nav>
+    <div class="logo-box">
+        <img src="logo.png" alt="KASSI Brand Logo">
+    </div>
+    <ul class="nav-links">
+        <li><a href="#missions">Missions</a></li>
+        <li><a href="#tech">Technologies</a></li>
+        <li><a href="#formation">Formation</a></li>
+    </ul>
+</nav>
+
+<section class="hero">
+    <div class="hero-text" data-aos="fade-right">
+        <h1>KASSI Koua Gerard</h1>
+        <h2>IT LOCAL A CONCENTRIX CORPORATE</h2>
+        <p>Technicien spécialisé dans l'exploitation d'infrastructures critiques et le support haute performance.</p>
+        <div class="stats-banner">
+            <i class="fas fa-desktop"></i> &nbsp; GESTION DE +900 POSTES DE TRAVAIL
         </div>
-        <ul class="nav-links">
-            <li><a href="#experience">Expérience</a></li>
-            <li><a href="#tech">Technologies</a></li>
-            <li><a href="#projets">Projets</a></li>
-        </ul>
-    </nav>
+    </div>
+</section>
 
-    <section class="hero">
-        <div class="hero-text" data-aos="fade-up">
-            <h1>KASSI Koua Gerard</h1>
-            <h2>IT LOCAL & FRAMEWORK DJANGO DEV</h2>
-            <p>Technicien infrastructure avec 2 ans d'expérience chez Concentrix et développeur de solutions web d'entreprise.</p>
-            <div class="badge-it">2 ANS D'EXPÉRIENCE IT @ CONCENTRIX</div>
+<section id="missions">
+    <h2 class="title-main" data-aos="fade-up">Missions & Expertise</h2>
+    <div class="bento-grid">
+        <div class="bento-card featured">
+            <h3>Support & Infrastructure</h3>
+            <ul>
+                <li>Support utilisateur (Showroomprive, Nespresso...)</li>
+                <li>Administration Active Directory</li>
+                <li>Gestion réseau IP (Meraki, Fortinet)</li>
+                <li>Infrastructure virtualisée & VRTX</li>
+            </ul>
         </div>
-    </section>
 
-    <section id="experience">
-        <h2 class="title-main">Parcours Professionnel</h2>
-        <div class="bento-grid">
-            
-            <div class="bento-card wide highlight" data-aos="fade-up">
-                <span class="tag">ACTUEL (2 ANS)</span>
-                <h3>IT LOCAL - CONCENTRIX CORPORATE</h3>
-                <p>Gestion d'un parc de <strong>900+ ordinateurs</strong>. Support Nespresso, Bureau Veritas, Finary, Pledge, Orange Pro.</p>
-                <div class="tag">Meraki</div> <div class="tag">Fortinet</div> <div class="tag">ASA</div> <div class="tag">Active Directory</div>
-            </div>
-
-            <div class="bento-card" data-aos="fade-up">
-                <span class="tag">2021 - 2024</span>
-                <h3>MANAGER D'ACTIVITÉ</h3>
-                <p>Gestion de l'activité <strong>Cdiscount</strong>. Leadership et optimisation des processus opérationnels.</p>
-            </div>
-
-            <div class="bento-card" data-aos="fade-up">
-                <span class="tag">2018 - 2021</span>
-                <h3>CONSEILLER CLIENT</h3>
-                <p>Gestion du compte <strong>Showroomprive</strong>. Excellence de la relation client et support technique niveau 1.</p>
-            </div>
-
-            <div class="bento-card wide" data-aos="fade-up">
-                <span class="tag">PROJET PHARE</span>
-                <h3>SOLUTION WEB - CITYPROP ABIDJAN</h3>
-                <p>Implémentation d'une solution web complète pour l'entreprise CityProp à Abidjan, optimisant la gestion des services locaux.</p>
-                <div class="tag">Django</div> <div class="tag">Python</div> <div class="tag">PostgreSQL</div>
-            </div>
-        </div>
-    </section>
-
-    <section id="tech" style="background: white;">
-        <h2 class="title-main">Environnement Technique</h2>
-        <div class="bento-grid">
-            <div class="bento-card">
-                <h3>Développement</h3>
-                <div class="tag">Django Framework</div> <div class="tag">Python</div> <div class="tag">IA Automation</div>
-            </div>
-            <div class="bento-card">
-                <h3>Infrastructure</h3>
-                <div class="tag">VRTX</div> <div class="tag">BIGFIX</div> <div class="tag">VPN</div> <div class="tag">PCI/DSS</div><div class="tag">MERAKI</div>
-                <div class="tag">ADMIN DUO</div><div class="tag">CISCO</div>
-            </div>
-            <div class="bento-card">
-                <h3>Collaboratif</h3>
-                <div class="tag">Office 365</div> <div class="tag">Freshdesk</div> <div class="tag">Solvnow</div> <div class="tag">Bigfix</div>
-            </div>
-        </div>
-    </section>
-
-    <section id="projets">
-        <h2 class="title-main">Formation</h2>
         <div class="bento-card">
-            <h3>BREVET DE TECHNICIEN SUPERIEUR</h3>
-            <p>Réseaux Informatique et Télécommunications (2016-2017)</p>
-            <p><em>Inclus Certification CISCO Discovery Niveau 1</em></p>
+            <h3>Innovation & IA</h3>
+            <p>Automatisation via PowerShell et IA pour optimiser les performances IT.</p>
         </div>
-    </section>
 
-    <footer>
-        <p><strong>KASSI Koua Gerard</strong> | IT & DEV Portfolio 2026</p>
-        <p>Abidjan, Côte d'Ivoire</p>
-    </footer>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>AOS.init({ duration: 1000 });</script>
-</body>
-</html>
+        <div class="bento-card">
+            <h3>Déploiement Activités</h3>
+            <p>Set-up complet de 5
