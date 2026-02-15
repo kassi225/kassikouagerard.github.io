@@ -3,213 +3,281 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KASSI Koua Gerard | IT Local & Django Dev</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>KASSI Koua Gerard | Expert IT & Dev Django</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         :root {
-            --brand-blue: #0052FF;
-            --dark-navy: #0A192F;
-            --white: #FFFFFF;
-            --bg-gray: #F4F7FA;
+            --brand-blue: #0062ff;
+            --brand-dark: #0035a5;
+            --dark-navy: #0f172a;
+            --text-gray: #64748b;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+            --card-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.05);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-gray);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-light);
             color: var(--dark-navy);
             line-height: 1.6;
         }
 
-        /* NAVIGATION AVEC LOGO AGRANDI */
         nav {
             position: fixed;
-            top: 0; width: 100%;
-            height: 110px; /* Hauteur augmentée pour le logo */
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 8%;
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            border-bottom: 2px solid var(--brand-blue);
+            top: 0; width: 100%; height: 70px;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0 8%; background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(15px); z-index: 1000;
+            border-bottom: O,5px solid rgba(0,0,0,0.05);
         }
 
         .logo-box img {
-            height: 100px; /* TAILLE DU LOGO AUGMENTÉE */
+            height: 85px; 
             width: auto;
-            object-fit: contain;
         }
 
         .nav-links { display: flex; list-style: none; }
-        .nav-links li { margin-left: 35px; }
-        .nav-links a { 
-            text-decoration: none; 
-            color: var(--dark-navy); 
-            font-weight: 700; 
-            font-size: 0.9rem;
-            text-transform: uppercase;
-        }
+        .nav-links li { margin-left: 30px; }
+        .nav-links a { text-decoration: none; color: var(--dark-navy); font-weight: 700; font-size: 0.9rem; text-transform: uppercase; }
 
-        /* HERO SECTION */
         .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 0 8%;
-            background: linear-gradient(135deg, #fff 60%, var(--brand-blue) 60%);
+            height: 100vh; display: flex; align-items: center; padding: 120px 8% 0;
+            background: radial-gradient(circle at 80% 20%, #e0e7ff 0%, var(--bg-light) 50%);
         }
 
-        .hero-text h1 { font-size: 3.5rem; color: var(--dark-navy); }
-        .hero-text h2 { font-size: 1.8rem; color: var(--brand-blue); margin: 15px 0; }
+        .hero-text h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 800; color: var(--dark-navy); line-height: 1; }
+        .hero-text h2 { font-size: 1.8rem; color: var(--brand-blue); margin: 20px 0; font-weight: 700; }
         
-        .badge-it {
-            display: inline-block;
-            background: var(--dark-navy);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-weight: bold;
-            margin-top: 10px;
+        .badge-main {
+            display: inline-block; padding: 8px 16px; background: #dbeafe; color: var(--brand-blue);
+            border-radius: 50px; font-weight: 800; font-size: 0.8rem; margin-bottom: 20px;
         }
 
-        /* BENTO GRID */
-        section { padding: 100px 8%; }
-        .title-main { font-size: 2.2rem; margin-bottom: 50px; border-left: 8px solid var(--brand-blue); padding-left: 20px; }
-
-        .bento-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+        /* --- NOUVEAU SYSTÈME DE DÉFILEMENT DES CLIENTS --- */
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
         }
 
-        .bento-card {
+        .account-section {
             background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 30px 0;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
+
+        .account-container {
+            display: flex;
+            width: max-content;
+            animation: scroll 35s linear infinite;
+        }
+
+        .account-container:hover {
+            animation-play-state: paused;
+        }
+
+        .account-item {
+            flex: 0 0 auto;
+            margin: 0 15px;
+            padding: 12px 30px;
+            background: var(--bg-light);
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 0.9rem;
+            color: var(--brand-blue);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            border: 1px solid rgba(0,98,255,0.05);
+        }
+
+        section { padding: 80px 8%; }
+        .title-main { font-size: 2.5rem; margin-bottom: 50px; font-weight: 800; }
+        .title-main span { color: var(--brand-blue); }
+
+        .bento-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
+        .bento-card {
+            background: var(--white); padding: 40px; border-radius: 30px;
+            box-shadow: var(--card-shadow); border: 1px solid rgba(0,0,0,0.02);
+            transition: 0.4s;
+        }
+        .bento-card:hover { transform: translateY(-10px); border-color: var(--brand-blue); }
 
         .wide { grid-column: span 2; }
-        .highlight { border: 2px solid var(--brand-blue); }
+        .full { grid-column: span 3; }
+        .highlight { background: var(--dark-navy); color: white; }
 
         .tag { 
-            display: inline-block;
-            background: #eef2ff; 
-            color: var(--brand-blue); 
-            padding: 5px 12px; 
-            border-radius: 4px; 
-            font-size: 0.75rem; 
-            font-weight: 800;
-            margin: 4px;
+            display: inline-block; background: #f1f5f9; color: var(--dark-navy); 
+            padding: 6px 14px; border-radius: 8px; font-size: 0.75rem; font-weight: 700;
+            margin: 4px; border: 1px solid rgba(0,0,0,0.05);
+        }
+        .highlight .tag { background: rgba(255,255,255,0.1); color: white; border: none; }
+
+        footer { background: var(--dark-navy); color: white; padding: 60px 8%; text-align: center; }
+        
+        .btn-cv {
+            display: inline-block; background: var(--brand-blue); color: white; 
+            padding: 15px 35px; border-radius: 12px; text-decoration: none; 
+            font-weight: 700; margin-top: 20px; box-shadow: 0 10px 20px rgba(0,98,255,0.2);
         }
 
-        footer { background: var(--dark-navy); color: white; padding: 40px; text-align: center; }
-
-        @media (max-width: 992px) { .bento-grid { grid-template-columns: 1fr; } .wide { grid-column: span 1; } }
+        @media (max-width: 992px) { .bento-grid { grid-template-columns: 1fr; } .wide, .full { grid-column: span 1; } }
     </style>
 </head>
 <body>
 
     <nav>
         <div class="logo-box">
-            <img src="logo.png" alt="KASSI Brand Logo">
+            <img src="logo.png" alt="GK LOGO"> 
         </div>
         <ul class="nav-links">
-            <li><a href="#experience">Expérience</a></li>
-            <li><a href="#tech">Technologies</a></li>
-            <li><a href="#projets">Projets</a></li>
+            <li><a href="#experience">Parcours</a></li>
+            <li><a href="#tech">Expertise IT</a></li>
+            <li><a href="#formation">Formation</a></li>
         </ul>
     </nav>
 
     <section class="hero">
         <div class="hero-text" data-aos="fade-up">
+            <div class="badge-main">EXPERT INFRASTRUCTURE & DÉVELOPPEMENT</div>
             <h1>KASSI Koua Gerard</h1>
-            <h2>IT LOCAL & FRAMEWORK DJANGO DEV</h2>
-            <p>Technicien infrastructure avec 2 ans d'expérience chez Concentrix et développeur de solutions web d'entreprise.</p>
-            <div class="badge-it">2 ANS D'EXPÉRIENCE IT @ CONCENTRIX</div>
+            <h2>IT LOCAL SPECIALIST & DJANGO DEV</h2>
+            <p style="max-width: 700px; color: var(--text-gray); font-size: 1.1rem;">
+                Spécialiste du maintien opérationnel chez <strong>Concentrix Corporate</strong>. Gestion d'un parc de <strong>900+ postes</strong> et concepteur de solutions web automatisées par l'IA.
+            </p>
+            <a href="CV Kassi Koua Gerard.pdf" class="btn-cv" target="_blank"><i class="fas fa-file-download"></i> Télécharger mon CV</a>
         </div>
     </section>
 
+    <div class="account-section">
+        <p style="font-weight: 600; font-size: 0.75rem; text-transform: uppercase; opacity: 0.5; margin-bottom: 15px; padding-left: 8%;">Comptes Clients & Activités Gérés</p>
+        <div class="account-container">
+            <div class="account-item">NESPRESSO</div>
+            <div class="account-item">ORANGE BANK AFRICA</div>
+            <div class="account-item">BUREAU VERITAS</div>
+            <div class="account-item">CDISCOUNT</div>
+            <div class="account-item">FINARY</div>
+            <div class="account-item">ORANGE PRO</div>
+            <div class="account-item">PLEDGE</div>
+            <div class="account-item">COMUTITRE</div>
+            <div class="account-item">CONFORAMA</div>
+            <div class="account-item">NESPRESSO</div>
+            <div class="account-item">ORANGE BANK AFRICA</div>
+            <div class="account-item">BUREAU VERITAS</div>
+            <div class="account-item">CDISCOUNT</div>
+            <div class="account-item">FINARY</div>
+            <div class="account-item">ORANGE PRO</div>
+            <div class="account-item">PLEDGE</div>
+            <div class="account-item">COMUTITRE</div>
+            <div class="account-item">CONFORAMA</div>
+        </div>
+    </div>
+
     <section id="experience">
-        <h2 class="title-main">Parcours Professionnel</h2>
+        <h2 class="title-main">Parcours <span>Stratégique</span></h2>
         <div class="bento-grid">
-            
-            <div class="bento-card wide highlight" data-aos="fade-up">
-                <span class="tag">ACTUEL (2 ANS)</span>
-                <h3>IT LOCAL - CONCENTRIX CORPORATE</h3>
-                <p>Gestion d'un parc de <strong>900+ ordinateurs</strong>. Support: Nespresso, Bureau Veritas, Finary, Pledge, Orange Pro, cdiscount, 
-                    Conforama,Comutitre, Backmarket Orange Bank Africa </p>
-                <div class="tag">Meraki</div> <div class="tag">Fortinet</div> <div class="tag">ASA</div> <div class="tag">Active Directory</div>
+            <div class="bento-card wide highlight" data-aos="fade-right">
+                <span class="tag" style="color: #4ade80;">POSTE ACTUEL</span>
+                <h3>IT Local - Concentrix Corporate (2 ans)</h3>
+                <p style="margin: 15px 0; opacity: 0.85;">
+                    Exploitation de l'infrastructure critique et support niveau 3 pour 900+ utilisateurs. 
+                    Mise en place et tests des sauvegardes/restaurations et sécurisation des accès internet.
+                </p>
+                <div class="tag">Active Directory</div> <div class="tag">Réseau IP</div> <div class="tag">Virtualisation</div>
             </div>
 
-            <div class="bento-card" data-aos="fade-up">
+            <div class="bento-card" data-aos="fade-left">
                 <span class="tag">2021 - 2024</span>
-                <h3>MANAGER D'ACTIVITÉ</h3>
-                <p>Gestion de l'activité <strong>Cdiscount</strong>. Leadership et optimisation des processus opérationnels.</p>
+                <h3>Contrôleur qualité</h3>
+                <p>Pilotage de la qualité et la conformité des traitements sur <strong>Cdiscount</strong> : Management d'équipe et suivi des KPIs.</p>
             </div>
 
             <div class="bento-card" data-aos="fade-up">
-                <span class="tag">2018 - 2021</span>
-                <h3>CONSEILLER CLIENT</h3>
-                <p>Gestion du compte <strong>Showroomprive</strong>. Excellence de la relation client et support technique niveau 1.</p>
+                <span class="tag">DJANGO DEV</span>
+                <h3>CityProp Abidjan</h3>
+                <p>Développement d'une solution Web d'entreprise via le framework Django.</p>
+                <a href="https://github.com/kassi225/Cityprop" target="_blank" style="color: var(--brand-blue); font-weight: 700; text-decoration: none; font-size: 0.8rem;">VOIR LE CODE <i class="fab fa-github"></i></a>
             </div>
 
-            <div class="bento-card wide" data-aos="fade-up">
-                <span class="tag">PROJET PHARE</span>
-                <h3>SOLUTION WEB - CITYPROP ABIDJAN</h3>
-                <p>Implémentation d'une solution web complète pour l'entreprise CityProp à Abidjan, optimisant la gestion immobilière locale.</p>
-                <div class="tag">Django</div> <div class="tag">Python</div> <div class="tag">PostgreSQL</div>
+            <div class="bento-card" data-aos="fade-up" data-aos-delay="100">
+                <span class="tag">2018 - 2021</span>
+                <h3>Conseiller Client</h3>
+                <p>Gestion du SAV pour <strong>Showroomprive</strong>. Excellence relationnelle et support technique.</p>
+            </div>
+
+            <div class="bento-card" data-aos="fade-up" data-aos-delay="200">
+                <span class="tag">INNOVATION</span>
+                <h3>IA & Automation</h3>
+                <p>Automatisation via scripts <strong>Python/Bash/PowerShell</strong> et intégration d'IA.</p>
             </div>
         </div>
     </section>
 
     <section id="tech" style="background: white;">
-        <h2 class="title-main">Environnement Technique</h2>
+        <h2 class="title-main">Expertise <span>Technique</span></h2>
         <div class="bento-grid">
             <div class="bento-card">
-                <h3>Développement</h3>
-                <div class="tag">Django Framework</div> <div class="tag">Python</div> <div class="tag">IA Automation</div>
+                <h4 style="color: var(--brand-blue); margin-bottom: 15px;">INFRASTRUCTURE & RÉSEAU</h4>
+                <div class="tag">Switch MERAKI</div> <div class="tag">Cisco Networking</div> <div class="tag">Fortinet</div> <div class="tag">VPN</div>
             </div>
             <div class="bento-card">
-                <h3>Infrastructure</h3>
-                <div class="tag">VRTX</div> <div class="tag">BIGFIX</div> <div class="tag">VPN</div> <div class="tag">PCI/DSS</div>
+                <h4 style="color: var(--brand-blue); margin-bottom: 15px;">ADMINISTRATION & SÉCURITÉ</h4>
+                <div class="tag">Windows Server</div> <div class="tag">Active Directory</div> <div class="tag">BIGFIX</div> <div class="tag">Sauvegarde</div>
             </div>
             <div class="bento-card">
-                <h3>Collaboratif</h3>
-                <div class="tag">Office 365</div> <div class="tag">Freshdesk</div> <div class="tag">Solvnow</div>
+                <h4 style="color: var(--brand-blue); margin-bottom: 15px;">DÉVELOPPEMENT & GESTION</h4>
+                <div class="tag">Django</div> <div class="tag">Python</div> <div class="tag">Méthodes Agiles</div> <div class="tag">Office 365</div>
             </div>
         </div>
     </section>
 
-    <section id="projets">
-        <h2 class="title-main">Formation</h2>
-        <div class="bento-card">
-            <h3>BREVET DE TECHNICIEN SUPERIEUR</h3>
-            <p>Réseaux Informatique et Télécommunications (2016-2017)</p>
-            <p><em>Inclus Certification CISCO Discovery Niveau 1</em></p>
+    <section id="formation">
+        <h2 class="title-main">Diplômes <span>& Certifications</span></h2>
+        <div class="bento-grid">
+            <div class="bento-card wide" style="display: flex; align-items: center; gap: 25px;" data-aos="fade-up">
+                <i class="fas fa-user-graduate" style="font-size: 3rem; color: var(--brand-blue);"></i>
+                <div>
+                    <h3>BTS Réseaux Informatique et Télécoms</h3>
+                    <p>Option : RIT (2016-2017). Formation pratique Administration Réseau et Système.</p>
+                </div>
+            </div>
+
+            <div class="bento-card" data-aos="fade-up">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
+                    <i class="fab fa-linkedin" style="font-size: 1.5rem; color: #0077b5;"></i>
+                    <span class="tag" style="background: #eef2f7;">RÉSEAU</span>
+                </div>
+                <h3>CCNA v1.1 : Théorie (200-301)</h3>
+                <p style="font-size: 0.75rem; font-weight: 600; color: var(--brand-blue);">Délivré en Nov. 2025</p>
+            </div>
+
+            <div class="bento-card" data-aos="fade-up" data-aos-delay="100">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
+                    <i class="fab fa-linkedin" style="font-size: 1.5rem; color: #0077b5;"></i>
+                    <span class="tag" style="background: #eef2f7;">PROJET</span>
+                </div>
+                <h3>Méthodes Agiles & Dév. Logiciel</h3>
+                <p style="font-size: 0.75rem; font-weight: 600; color: var(--brand-blue);">Délivré en Janv. 2026</p>
+            </div>
+
+            <div class="bento-card highlight" style="text-align: center;" data-aos="fade-up">
+                <i class="fas fa-certificate" style="font-size: 1.5rem; margin-bottom: 10px;"></i>
+                <h3>CISCO Discovery</h3>
+                <p>Certification Niveau 1 obtenue.</p>
+            </div>
         </div>
     </section>
 
     <footer>
-        <p><strong>KASSI Koua Gerard</strong> | IT & DEV Portfolio 2026</p>
-        <p>Abidjan, Côte d'Ivoire</p>
+        <p><strong>KASSI Koua Gerard</strong> | Abidjan, Côte d'Ivoire</p>
+        <p style="opacity: 0.6; font-size: 0.8rem; margin-top: 10px;">Portfolio Professionnel 2026</p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>AOS.init({ duration: 1000 });</script>
+    <script>AOS.init({ duration: 1000, once: true });</script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
