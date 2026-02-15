@@ -3,127 +3,227 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KASSI Koua Gerard | IT Infrastructure & Dev</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>KASSI Koua Gerard | IT Local Technicien</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
-        :root { --primary-blue: #2563eb; --bg-light: #f8faff; --text-dark: #1e293b; --white: #ffffff; }
+        :root {
+            --brand-blue: #0052FF;
+            --dark-navy: #0A192F;
+            --light-slate: #8892B0;
+            --white: #FFFFFF;
+            --bg-gray: #F4F7FA;
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
-        body { font-family: 'Poppins', sans-serif; background: var(--bg-light); color: var(--text-dark); }
-        
-        /* NAVIGATION AVEC LOGO */
-        nav { position: fixed; top: 0; width: 100%; padding: 15px 50px; display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.9); backdrop-filter: blur(10px); z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        .logo-container img { height: 50px; width: auto; } /* Ton logo perso */
-        nav ul { display: flex; list-style: none; }
-        nav ul li { margin-left: 25px; }
-        nav ul li a { text-decoration: none; color: var(--text-dark); font-weight: 500; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-gray);
+            color: var(--dark-navy);
+            line-height: 1.6;
+        }
+
+        /* NAVIGATION */
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            height: 90px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 8%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .logo-box img {
+            height: 65px; /* Taille augmentée pour la visibilité */
+            width: auto;
+            object-fit: contain;
+        }
+
+        .nav-links { display: flex; list-style: none; }
+        .nav-links li { margin-left: 35px; }
+        .nav-links a { 
+            text-decoration: none; 
+            color: var(--dark-navy); 
+            font-weight: 600; 
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
 
         /* HERO SECTION */
-        .hero { height: 100vh; display: flex; align-items: center; padding: 0 10%; background: linear-gradient(135deg, #fff 55%, var(--primary-blue) 55%); }
-        .hero-content h1 { font-size: 3.5rem; line-height: 1.1; }
-        .hero-content h2 { color: var(--primary-blue); margin: 15px 0; font-size: 1.4rem; }
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 8%;
+            background: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)), url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+        }
 
-        /* EXPERIENCE & SKILLS */
-        section { padding: 80px 10%; }
-        .section-title { font-size: 2rem; margin-bottom: 40px; border-left: 5px solid var(--primary-blue); padding-left: 15px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-        .card { background: var(--white); padding: 25px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); transition: 0.3s; }
-        .card:hover { transform: translateY(-5px); border-bottom: 4px solid var(--primary-blue); }
-        .tag-container { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px; }
-        .tag { background: #eef2ff; color: var(--primary-blue); padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
-        
-        /* LISTE INFRA */
-        .infra-list { list-style: none; }
-        .infra-list li { margin-bottom: 10px; padding-left: 25px; position: relative; }
-        .infra-list li::before { content: "\f00c"; font-family: "Font Awesome 5 Free"; font-weight: 900; position: absolute; left: 0; color: var(--primary-blue); }
+        .hero-text h1 { font-size: 4rem; color: var(--dark-navy); margin-bottom: 10px; }
+        .hero-text h2 { 
+            font-size: 1.8rem; 
+            color: var(--brand-blue); 
+            font-weight: 400;
+            margin-bottom: 25px; 
+        }
+        .stats-banner {
+            display: inline-flex;
+            background: var(--dark-navy);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
 
-        @media (max-width: 768px) { .hero { background: white; text-align: center; } .hero-content h1 { font-size: 2.2rem; } }
+        /* SECTIONS */
+        section { padding: 100px 8%; }
+        .title-main { font-size: 2.2rem; margin-bottom: 50px; position: relative; }
+        .title-main::after {
+            content: ""; display: block; width: 60px; height: 4px; background: var(--brand-blue); margin-top: 10px;
+        }
+
+        /* BENTO GRID EXPERIENCE */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .bento-card {
+            background: white;
+            padding: 35px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            transition: 0.3s;
+        }
+
+        .bento-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
+
+        .featured { grid-column: span 2; border-top: 5px solid var(--brand-blue); }
+
+        .bento-card h3 { color: var(--brand-blue); margin-bottom: 15px; font-size: 1.3rem; }
+        .bento-card ul { list-style: none; }
+        .bento-card li { margin-bottom: 12px; padding-left: 20px; position: relative; font-size: 0.95rem; }
+        .bento-card li::before { content: "→"; position: absolute; left: 0; color: var(--brand-blue); }
+
+        /* SKILLS TAGS */
+        .tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+        .tag { background: #f0f4ff; color: #3b66f5; padding: 6px 14px; border-radius: 6px; font-size: 0.8rem; font-weight: 700; }
+
+        footer { background: var(--dark-navy); color: white; padding: 60px 8%; text-align: center; }
+
+        @media (max-width: 992px) {
+            .bento-grid { grid-template-columns: 1fr; }
+            .featured { grid-column: span 1; }
+            .hero-text h1 { font-size: 2.5rem; }
+        }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo-container">
-            <img src="logo.png" alt="Mon Logo Personnel">
+        <div class="logo-box">
+            <img src="logo.png" alt="KASSI Brand Logo">
         </div>
-        <ul>
-            <li><a href="#experience">Expérience</a></li>
+        <ul class="nav-links">
+            <li><a href="#missions">Missions</a></li>
+            <li><a href="#tech">Technologies</a></li>
             <li><a href="#formation">Formation</a></li>
-            <li><a href="#skills">Outils</a></li>
         </ul>
     </nav>
 
     <section class="hero">
-        <div class="hero-content" data-aos="fade-up">
+        <div class="hero-text" data-aos="fade-right">
             <h1>KASSI Koua Gerard</h1>
             <h2>IT LOCAL A CONCENTRIX CORPORATE</h2>
-            <p>Expert en infrastructure réseaux et systèmes, assurant la haute disponibilité de plus de 900 postes de travail et le déploiement d'activités majeures.</p>
-            <div style="margin-top: 30px;">
-                <a href="#experience" class="tag" style="padding: 15px 30px; font-size: 1rem;">Voir mon parcours</a>
+            <p>Technicien spécialisé dans l'exploitation d'infrastructures critiques et le support haute performance.</p>
+            <div class="stats-banner">
+                <i class="fas fa-desktop"></i> &nbsp; GESTION DE +900 POSTES DE TRAVAIL
             </div>
         </div>
     </section>
 
-    <section id="experience">
-        <h2 class="section-title" data-aos="fade-right">Expérience Professionnelle</h2>
-        <div class="card" data-aos="fade-up">
-            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                <h3>IT LOCAL - CONCENTRIX CORPORATE</h3>
-                <span class="tag">Actuel</span>
+    <section id="missions">
+        <h2 class="title-main" data-aos="fade-up">Missions & Expertise</h2>
+        <div class="bento-grid">
+            
+            <div class="bento-card featured" data-aos="fade-up">
+                <h3>Support & Infrastructure</h3>
+                <ul>
+                    <li>Assurer le support utilisateur en centre de services (Showroomprive, Nespresso, etc.).</li>
+                    <li>Exploitation de serveurs Windows et administration Active Directory.</li>
+                    <li>Gestion du réseau IP et équipements critiques (Meraki, Fortinet, ASA).</li>
+                    <li>Maintenance de l'infrastructure virtualisée et serveurs VRTX.</li>
+                </ul>
+                <div class="tags">
+                    <span class="tag">BIGFIX</span> <span class="tag">Active Directory</span> <span class="tag">VRTX</span> <span class="tag">PCI/DSS</span>
+                </div>
             </div>
-            <p style="margin: 10px 0; font-weight: 600;">Gestion d'un parc de 900+ computers et set-up multi-activités.</p>
-            <ul class="infra-list">
-                <li>Support utilisateur, administration Windows Server & Active Directory. [cite: 15]</li>
-                <li>Exploitation réseaux : Switch MERAKI, Fortinet, ASA. [cite: 12]</li>
-                <li>Automatisation via scripts et Intelligence Artificielle (IA).</li>
-                <li>Mise en place et test de plans de sauvegarde/restauration.</li>
-                <li><strong>Projets clés :</strong> Set-up Nespresso, Bureau Veritas, Finary, Pledge Orange Pro.</li>
-            </ul>
-            <div class="tag-container">
-                <span class="tag">VRTX</span> <span class="tag">BIGFIX</span> <span class="tag">Freshdesk</span> <span class="tag">Solvnow</span> <span class="tag">PCI/DSS</span>
+
+            <div class="bento-card" data-aos="fade-up" data-aos-delay="100">
+                <h3>Innovation & IA</h3>
+                <p>Automatisation des tâches quotidiennes à l’aide de scripts et de l'intelligence artificielle (IA) pour optimiser les performances de l'infrastructure.</p>
+                <div class="tags" style="margin-top: 40px;">
+                    <span class="tag">PowerShell</span> <span class="tag">IA Automation</span> <span class="tag">Bash</span>
+                </div>
             </div>
+
+            <div class="bento-card" data-aos="fade-up">
+                <h3>Déploiement Activités</h3>
+                <p>Set-up complet de plus de 5 activités stratégiques sur le site d'Abidjan :</p>
+                <ul>
+                    <li>Nespresso</li>
+                    <li>Bureau Veritas</li>
+                    <li>Finary</li>
+                    <li>Pledge Orange Pro</li>
+                </ul>
+            </div>
+
+            <div class="bento-card featured" data-aos="fade-up" data-aos-delay="200">
+                <h3>Environnement Collaboratif & Ticketing</h3>
+                <div class="tags">
+                    <span class="tag">Office 365</span> <span class="tag">Teams</span> <span class="tag">SharePoint</span> <span class="tag">OneDrive</span> <span class="tag">Solvnow</span> <span class="tag">Freshdesk</span>
+                </div>
+                <p style="margin-top:20px;">Maîtrise complète des outils de communication corporate et des plateformes de gestion d'incidents (Ticketing).</p>
+            </div>
+
         </div>
     </section>
 
-    <section id="formation" style="background: #f1f5f9;">
-        <h2 class="section-title" data-aos="fade-right">Cursus Académique</h2>
-        <div class="grid">
-            <div class="card" data-aos="zoom-in">
+    <section id="formation" style="background: white;">
+        <h2 class="title-main" data-aos="fade-up">Parcours Académique</h2>
+        <div class="bento-grid">
+            <div class="bento-card" style="border-left: 5px solid var(--brand-blue);">
                 <h3>BREVET DE TECHNICIEN SUPERIEUR</h3>
-                <p>Option : Réseaux Informatique et Télécommunications [cite: 11, 12]</p>
+                <p>Option : Réseaux Informatique et Télécommunications (2016-2017)</p>
             </div>
-            <div class="card" data-aos="zoom-in" data-aos-delay="100">
+            <div class="bento-card">
+                <h3>CISCO DISCOVERY NIVEAU 1</h3>
+                <p>Certificat Supérieur Spécialisé Professionnel - ITA Ingénierie</p>
+            </div>
+            <div class="bento-card">
                 <h3>Baccalauréat Série D</h3>
-                <p>Lycée Municipal Koumassi [cite: 13]</p>
+                <p>Lycée Municipal Koumassi</p>
             </div>
         </div>
     </section>
 
-    <section id="skills">
-        <h2 class="section-title" data-aos="fade-right">Environnement Technique</h2>
-        <div class="grid">
-            <div class="card" data-aos="flip-up">
-                <h4>Productivité & Collaboration</h4>
-                <div class="tag-container">
-                    <span class="tag">Office 365</span> <span class="tag">Teams</span> <span class="tag">SharePoint</span> <span class="tag">OneDrive</span>
-                </div>
-            </div>
-            <div class="card" data-aos="flip-up" data-aos-delay="100">
-                <h4>Systèmes & Scripting</h4>
-                <div class="tag-container">
-                    <span class="tag">Bash</span> <span class="tag">PowerShell</span> <span class="tag">TCP/IP</span> <span class="tag">VPN</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer style="text-align: center; padding: 40px; background: var(--text-dark); color: white;">
-        <p>KASSI Koua Gerard - 2026</p>
-        <p style="font-size: 0.8rem; opacity: 0.7;">Expertise IT & Innovation IA</p>
+    <footer>
+        <p><strong>KASSI Koua Gerard</strong> - Technicien IT Local</p>
+        <p style="font-size: 0.8rem; opacity: 0.7; margin-top: 10px;">kassigerard28@gmail.com | Concentrix Corporate Abidjan</p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>AOS.init({ duration: 800, once: true });</script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+    </script>
 </body>
 </html>
