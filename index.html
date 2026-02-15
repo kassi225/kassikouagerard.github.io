@@ -1,333 +1,205 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KASSI Koua Gerard | IT Local & Django Dev</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KASSI Koua Gerard | IT Local & Django Dev</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --brand-blue: #0052FF;
+            --dark-navy: #0A192F;
+            --white: #FFFFFF;
+            --bg-gray: #F4F7FA;
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
 
-<style>
-:root{
-    --primary:#0052FF;
-    --dark:#0A192F;
-    --light:#F5F7FA;
-    --white:#FFFFFF;
-}
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-gray);
+            color: var(--dark-navy);
+            line-height: 1.6;
+        }
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    scroll-behavior:smooth;
-}
+        /* NAVIGATION AVEC LOGO AGRANDI */
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            height: 110px; /* Hauteur augmentée pour le logo */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 8%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 2px solid var(--brand-blue);
+        }
 
-body{
-    font-family:'Inter',sans-serif;
-    background:var(--light);
-    color:var(--dark);
-}
+        .logo-box img {
+            height: 85px; /* TAILLE DU LOGO AUGMENTÉE */
+            width: auto;
+            object-fit: contain;
+        }
 
-/* ================= NAVBAR ================= */
+        .nav-links { display: flex; list-style: none; }
+        .nav-links li { margin-left: 35px; }
+        .nav-links a { 
+            text-decoration: none; 
+            color: var(--dark-navy); 
+            font-weight: 700; 
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
 
-nav{
-    position:fixed;
-    top:0;
-    width:100%;
-    height:100px;
-    background:white;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:0 8%;
-    border-bottom:2px solid var(--primary);
-    z-index:1000;
-}
+        /* HERO SECTION */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 8%;
+            background: linear-gradient(135deg, #fff 60%, var(--brand-blue) 60%);
+        }
 
-/* LOGO CARRE EXACT 1.5CM */
-.logo-box{
-    width:1.5cm;
-    height:1.5cm;
-}
+        .hero-text h1 { font-size: 3.5rem; color: var(--dark-navy); }
+        .hero-text h2 { font-size: 1.8rem; color: var(--brand-blue); margin: 15px 0; }
+        
+        .badge-it {
+            display: inline-block;
+            background: var(--dark-navy);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
 
-.logo-box img{
-    width:1.5cm;
-    height:1.5cm;
-    object-fit:cover;
-    border-radius:12px;
-}
+        /* BENTO GRID */
+        section { padding: 100px 8%; }
+        .title-main { font-size: 2.2rem; margin-bottom: 50px; border-left: 8px solid var(--brand-blue); padding-left: 20px; }
 
-.nav-links{
-    display:flex;
-    list-style:none;
-}
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
 
-.nav-links li{
-    margin-left:35px;
-}
+        .bento-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
 
-.nav-links a{
-    text-decoration:none;
-    font-weight:700;
-    font-size:0.85rem;
-    color:var(--dark);
-    text-transform:uppercase;
-}
+        .wide { grid-column: span 2; }
+        .highlight { border: 2px solid var(--brand-blue); }
 
-.nav-links a:hover{
-    color:var(--primary);
-}
+        .tag { 
+            display: inline-block;
+            background: #eef2ff; 
+            color: var(--brand-blue); 
+            padding: 5px 12px; 
+            border-radius: 4px; 
+            font-size: 0.75rem; 
+            font-weight: 800;
+            margin: 4px;
+        }
 
-/* ================= HERO ================= */
+        footer { background: var(--dark-navy); color: white; padding: 40px; text-align: center; }
 
-.hero{
-    height:100vh;
-    display:flex;
-    align-items:center;
-    padding:0 8%;
-    background:linear-gradient(135deg,white 60%, var(--primary) 60%);
-}
-
-.hero-text{
-    max-width:650px;
-}
-
-.hero-text h1{
-    font-size:3.5rem;
-    font-weight:800;
-}
-
-.hero-text h2{
-    font-size:1.5rem;
-    color:var(--primary);
-    margin:15px 0;
-}
-
-.badge{
-    display:inline-block;
-    background:var(--dark);
-    color:white;
-    padding:10px 20px;
-    margin-top:20px;
-    font-weight:700;
-    border-radius:6px;
-}
-
-/* ================= SECTIONS ================= */
-
-section{
-    padding:100px 8%;
-}
-
-.section-title{
-    font-size:2rem;
-    margin-bottom:50px;
-    border-left:6px solid var(--primary);
-    padding-left:15px;
-}
-
-.grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:25px;
-}
-
-.card{
-    background:white;
-    padding:30px;
-    border-radius:12px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.05);
-}
-
-.card h3{
-    color:var(--primary);
-    margin-bottom:15px;
-}
-
-.card ul{
-    padding-left:20px;
-}
-
-.wide{
-    grid-column:span 2;
-}
-
-.tag{
-    display:inline-block;
-    background:#eef2ff;
-    color:var(--primary);
-    padding:5px 12px;
-    font-size:0.75rem;
-    font-weight:700;
-    border-radius:4px;
-    margin:4px 4px 0 0;
-}
-
-/* ================= FOOTER ================= */
-
-footer{
-    background:var(--dark);
-    color:white;
-    text-align:center;
-    padding:40px;
-}
-
-/* RESPONSIVE */
-@media(max-width:992px){
-    .grid{
-        grid-template-columns:1fr;
-    }
-    .wide{
-        grid-column:span 1;
-    }
-    .hero-text h1{
-        font-size:2.2rem;
-    }
-}
-</style>
+        @media (max-width: 992px) { .bento-grid { grid-template-columns: 1fr; } .wide { grid-column: span 1; } }
+    </style>
 </head>
-
 <body>
 
-<nav>
-    <div class="logo-box">
-        <img src="logo.png" alt="KASSI Logo">
-    </div>
-    <ul class="nav-links">
-        <li><a href="#experience">Expérience</a></li>
-        <li><a href="#activites">Activités</a></li>
-        <li><a href="#tech">Technologies</a></li>
-        <li><a href="#projets">Projets</a></li>
-    </ul>
-</nav>
-
-<section class="hero">
-    <div class="hero-text">
-        <h1>KASSI Koua Gerard</h1>
-        <h2>IT Local • Contrôleur Qualité • Django Developer</h2>
-        <p>
-        Technicien infrastructure gérant un parc de plus de 900 postes de travail.
-        Expérience en contrôle qualité sur l’activité Cdiscount.
-        Développement d’applications web professionnelles avec Django.
-        </p>
-        <div class="badge">
-            2+ ANS D'EXPÉRIENCE IT @ CONCENTRIX
+    <nav>
+        <div class="logo-box">
+            <img src="logo.png" alt="KASSI Brand Logo">
         </div>
-    </div>
-</section>
+        <ul class="nav-links">
+            <li><a href="#experience">Expérience</a></li>
+            <li><a href="#tech">Technologies</a></li>
+            <li><a href="#projets">Projets</a></li>
+        </ul>
+    </nav>
 
-<section id="experience">
-    <h2 class="section-title">Parcours Professionnel</h2>
-
-    <div class="grid">
-
-        <div class="card wide">
-            <h3>IT LOCAL – CONCENTRIX CORPORATE</h3>
-            <p>
-            Gestion de 900+ postes, support multi-activités,
-            administration Active Directory, gestion réseau Meraki & Fortinet,
-            maintenance serveurs et sécurité.
-            </p>
-            <div class="tag">Active Directory</div>
-            <div class="tag">Meraki</div>
-            <div class="tag">Fortinet</div>
-            <div class="tag">BIGFIX</div>
+    <section class="hero">
+        <div class="hero-text" data-aos="fade-up">
+            <h1>KASSI Koua Gerard</h1>
+            <h2>IT LOCAL & FRAMEWORK DJANGO DEV</h2>
+            <p>Technicien infrastructure avec 2 ans d'expérience chez Concentrix et développeur de solutions web d'entreprise.</p>
+            <div class="badge-it">2 ANS D'EXPÉRIENCE IT @ CONCENTRIX</div>
         </div>
+    </section>
 
-        <div class="card">
-            <h3>Contrôleur Qualité – Activité Cdiscount</h3>
-            <p>
-            Analyse des performances, suivi KPI, audit conformité,
-            amélioration continue et reporting qualité.
-            </p>
+    <section id="experience">
+        <h2 class="title-main">Parcours Professionnel</h2>
+        <div class="bento-grid">
+            
+            <div class="bento-card wide highlight" data-aos="fade-up">
+                <span class="tag">ACTUEL (2 ANS)</span>
+                <h3>IT LOCAL - CONCENTRIX CORPORATE</h3>
+                <p>Gestion d'un parc de <strong>900+ ordinateurs</strong>. Support Nespresso, Bureau Veritas, Finary, Pledge Orange Pro.</p>
+                <div class="tag">Meraki</div> <div class="tag">Fortinet</div> <div class="tag">ASA</div> <div class="tag">Active Directory</div>
+            </div>
+
+            <div class="bento-card" data-aos="fade-up">
+                <span class="tag">2021 - 2024</span>
+                <h3>MANAGER D'ACTIVITÉ</h3>
+                <p>Gestion de l'activité <strong>Cdiscount</strong>. Leadership et optimisation des processus opérationnels.</p>
+            </div>
+
+            <div class="bento-card" data-aos="fade-up">
+                <span class="tag">2018 - 2021</span>
+                <h3>CONSEILLER CLIENT</h3>
+                <p>Gestion du compte <strong>Showroomprive</strong>. Excellence de la relation client et support technique niveau 1.</p>
+            </div>
+
+            <div class="bento-card wide" data-aos="fade-up">
+                <span class="tag">PROJET PHARE</span>
+                <h3>SOLUTION WEB - CITYPROP ABIDJAN</h3>
+                <p>Implémentation d'une solution web complète pour l'entreprise CityProp à Abidjan, optimisant la gestion immobilière locale.</p>
+                <div class="tag">Django</div> <div class="tag">Python</div> <div class="tag">PostgreSQL</div>
+            </div>
         </div>
+    </section>
 
-        <div class="card">
-            <h3>Conseiller Client</h3>
-            <p>
-            Support client et gestion des incidents niveau 1.
-            </p>
+    <section id="tech" style="background: white;">
+        <h2 class="title-main">Environnement Technique</h2>
+        <div class="bento-grid">
+            <div class="bento-card">
+                <h3>Développement</h3>
+                <div class="tag">Django Framework</div> <div class="tag">Python</div> <div class="tag">IA Automation</div>
+            </div>
+            <div class="bento-card">
+                <h3>Infrastructure</h3>
+                <div class="tag">VRTX</div> <div class="tag">BIGFIX</div> <div class="tag">VPN</div> <div class="tag">PCI/DSS</div>
+            </div>
+            <div class="bento-card">
+                <h3>Collaboratif</h3>
+                <div class="tag">Office 365</div> <div class="tag">Freshdesk</div> <div class="tag">Solvnow</div>
+            </div>
         </div>
+    </section>
 
-    </div>
-</section>
-
-<section id="activites" style="background:white;">
-    <h2 class="section-title">Activités & Setup IT</h2>
-
-    <div class="grid">
-
-        <div class="card">
-            <h3>Activités Supportées</h3>
-            <ul>
-                <li>Nespresso</li>
-                <li>Bureau Veritas</li>
-                <li>Finary</li>
-                <li>Pledge</li>
-                <li>Orange Pro</li>
-            </ul>
+    <section id="projets">
+        <h2 class="title-main">Formation</h2>
+        <div class="bento-card">
+            <h3>BREVET DE TECHNICIEN SUPERIEUR</h3>
+            <p>Réseaux Informatique et Télécommunications (2016-2017)</p>
+            <p><em>Inclus Certification CISCO Discovery Niveau 1</em></p>
         </div>
+    </section>
 
-        <div class="card wide">
-            <h3>Setup & Déploiement</h3>
-            <p>
-            Préparation et configuration des postes utilisateurs :
-            masterisation Windows, intégration domaine Active Directory,
-            configuration VPN, paramétrage Meraki & Fortinet,
-            installation logiciels métier, conformité sécurité.
-            </p>
-            <div class="tag">Masterisation</div>
-            <div class="tag">Active Directory</div>
-            <div class="tag">VPN</div>
-            <div class="tag">Meraki</div>
-            <div class="tag">Fortinet</div>
-        </div>
+    <footer>
+        <p><strong>KASSI Koua Gerard</strong> | IT & DEV Portfolio 2026</p>
+        <p>Abidjan, Côte d'Ivoire</p>
+    </footer>
 
-    </div>
-</section>
-
-<section id="tech">
-    <h2 class="section-title">Environnement Technique</h2>
-
-    <div class="grid">
-        <div class="card">
-            <h3>Développement</h3>
-            <div class="tag">Django</div>
-            <div class="tag">Python</div>
-            <div class="tag">PostgreSQL</div>
-        </div>
-
-        <div class="card">
-            <h3>Infrastructure</h3>
-            <div class="tag">Windows Server</div>
-            <div class="tag">VPN</div>
-            <div class="tag">VRTX</div>
-        </div>
-
-        <div class="card">
-            <h3>Automation</h3>
-            <div class="tag">PowerShell</div>
-            <div class="tag">IA Tools</div>
-        </div>
-    </div>
-</section>
-
-<section id="projets" style="background:white;">
-    <h2 class="section-title">Projet Web</h2>
-
-    <div class="card">
-        <h3>Solution Web – CityProp Abidjan</h3>
-        <p>
-        Développement d’une application web complète en Django
-        pour la gestion immobilière locale.
-        </p>
-    </div>
-</section>
-
-<footer>
-    <p><strong>KASSI Koua Gerard</strong> | IT Local & Django Developer</p>
-    <p>Abidjan – Côte d'Ivoire</p>
-</footer>
-
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init({ duration: 1000 });</script>
 </body>
 </html>
