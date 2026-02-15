@@ -3,18 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KASSI Koua Gerard | IT Local Technicien</title>
+<title>KASSI Koua Gerard | IT Local & Django Developer</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
 <style>
 :root {
     --brand-blue: #0052FF;
     --dark-navy: #0A192F;
-    --light-slate: #8892B0;
-    --white: #FFFFFF;
     --bg-gray: #F4F7FA;
 }
 
@@ -33,6 +30,7 @@ body {
 }
 
 /* NAVIGATION */
+
 nav {
     position: fixed;
     top: 0;
@@ -42,22 +40,27 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 0 8%;
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255,255,255,0.95);
     backdrop-filter: blur(10px);
-    z-index: 1000;
     border-bottom: 1px solid #e0e0e0;
+    z-index: 1000;
+}
+
+/* LOGO 1.5 CM CARRE */
+
+.logo-box {
+    width: 1.5cm;
+    height: 1.5cm;
 }
 
 .logo-box img {
-    height: 80px;
-    width: auto;
-    object-fit: contain;
-    transition: transform 0.3s ease;
+    width: 1.5cm;
+    height: 1.5cm;
+    object-fit: cover;
+    border-radius: 10px;
 }
 
-.logo-box img:hover {
-    transform: scale(1.05);
-}
+/* NAV LINKS */
 
 .nav-links {
     display: flex;
@@ -72,64 +75,41 @@ nav {
     text-decoration: none;
     color: var(--dark-navy);
     font-weight: 600;
-    font-size: 0.9rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    position: relative;
-}
-
-.nav-links a:hover {
-    color: var(--brand-blue);
-}
-
-.nav-links a::after {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 2px;
-    left: 0;
-    bottom: -5px;
-    background: var(--brand-blue);
-    transition: width 0.3s ease;
-}
-
-.nav-links a:hover::after {
-    width: 100%;
+    font-size: 0.9rem;
 }
 
 /* HERO */
+
 .hero {
     height: 100vh;
     display: flex;
     align-items: center;
     padding: 0 8%;
-    background: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)),
-    url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
 }
 
 .hero-text h1 {
-    font-size: 4rem;
-    margin-bottom: 10px;
+    font-size: 3.2rem;
 }
 
 .hero-text h2 {
-    font-size: 1.8rem;
     color: var(--brand-blue);
-    font-weight: 400;
-    margin-bottom: 25px;
+    margin: 15px 0;
+    font-weight: 500;
 }
 
 .stats-banner {
-    display: inline-flex;
+    margin-top: 25px;
     background: var(--dark-navy);
     color: white;
-    padding: 15px 25px;
+    padding: 12px 25px;
     border-radius: 8px;
+    display: inline-block;
     font-weight: bold;
-    margin-top: 20px;
 }
 
 /* SECTIONS */
+
 section {
     padding: 120px 8%;
     scroll-margin-top: 120px;
@@ -138,111 +118,68 @@ section {
 .title-main {
     font-size: 2.2rem;
     margin-bottom: 50px;
-    position: relative;
-}
-
-.title-main::after {
-    content: "";
-    display: block;
-    width: 60px;
-    height: 4px;
-    background: var(--brand-blue);
-    margin-top: 10px;
 }
 
 /* GRID */
-.bento-grid {
+
+.grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 25px;
 }
 
-.bento-card {
+.card {
     background: white;
-    padding: 35px;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-    transition: 0.3s;
+    padding: 30px;
+    border-radius: 14px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
 }
 
-.bento-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-}
-
-.featured {
-    grid-column: span 2;
-    border-top: 5px solid var(--brand-blue);
-}
-
-.bento-card h3 {
+.card h3 {
     color: var(--brand-blue);
     margin-bottom: 15px;
 }
 
-.bento-card ul {
+.card ul {
     list-style: none;
 }
 
-.bento-card li {
-    margin-bottom: 12px;
-    padding-left: 20px;
-    position: relative;
+.card li {
+    margin-bottom: 10px;
     font-size: 0.95rem;
 }
 
-.bento-card li::before {
-    content: "→";
-    position: absolute;
-    left: 0;
-    color: var(--brand-blue);
-}
-
 /* TAGS */
+
 .tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
     margin-top: 20px;
 }
 
 .tag {
-    background: #f0f4ff;
+    display: inline-block;
+    background: #eef2ff;
     color: #3b66f5;
-    padding: 6px 14px;
+    padding: 6px 12px;
     border-radius: 6px;
     font-size: 0.8rem;
-    font-weight: 700;
+    margin: 4px;
+    font-weight: 600;
 }
 
 /* FOOTER */
+
 footer {
     background: var(--dark-navy);
     color: white;
-    padding: 60px 8%;
+    padding: 50px 8%;
     text-align: center;
 }
 
 /* RESPONSIVE */
-@media (max-width: 992px) {
-    .bento-grid {
+
+@media(max-width: 992px){
+    .grid{
         grid-template-columns: 1fr;
-    }
-
-    .featured {
-        grid-column: span 1;
-    }
-
-    .hero-text h1 {
-        font-size: 2.5rem;
-    }
-
-    nav {
-        height: 80px;
-    }
-
-    .logo-box img {
-        height: 60px;
     }
 }
 </style>
@@ -252,44 +189,97 @@ footer {
 
 <nav>
     <div class="logo-box">
-        <img src="logo.png" alt="KASSI Brand Logo">
+        <img src="logo.png" alt="Logo">
     </div>
     <ul class="nav-links">
-        <li><a href="#missions">Missions</a></li>
+        <li><a href="#experience">Expérience</a></li>
         <li><a href="#tech">Technologies</a></li>
         <li><a href="#formation">Formation</a></li>
     </ul>
 </nav>
 
 <section class="hero">
-    <div class="hero-text" data-aos="fade-right">
+    <div class="hero-text">
         <h1>KASSI Koua Gerard</h1>
-        <h2>IT LOCAL A CONCENTRIX CORPORATE</h2>
-        <p>Technicien spécialisé dans l'exploitation d'infrastructures critiques et le support haute performance.</p>
+        <h2>IT Local & Développeur Django</h2>
+        <p>Professionnel IT spécialisé en infrastructure, support haute performance et développement d'applications web avec Django.</p>
         <div class="stats-banner">
-            <i class="fas fa-desktop"></i> &nbsp; GESTION DE +900 POSTES DE TRAVAIL
+            Gestion de +900 postes de travail
         </div>
     </div>
 </section>
 
-<section id="missions">
-    <h2 class="title-main" data-aos="fade-up">Missions & Expertise</h2>
-    <div class="bento-grid">
-        <div class="bento-card featured">
-            <h3>Support & Infrastructure</h3>
+<section id="experience">
+    <h2 class="title-main">Expérience Professionnelle</h2>
+
+    <div class="grid">
+        <div class="card">
+            <h3>IT Local</h3>
             <ul>
-                <li>Support utilisateur (Showroomprive, Nespresso...)</li>
                 <li>Administration Active Directory</li>
-                <li>Gestion réseau IP (Meraki, Fortinet)</li>
-                <li>Infrastructure virtualisée & VRTX</li>
+                <li>Gestion réseau (Meraki, Fortinet)</li>
+                <li>Maintenance serveurs & virtualisation</li>
+                <li>Support utilisateurs multi-activités</li>
             </ul>
         </div>
 
-        <div class="bento-card">
-            <h3>Innovation & IA</h3>
-            <p>Automatisation via PowerShell et IA pour optimiser les performances IT.</p>
+        <div class="card">
+            <h3>Contrôleur Qualité – Cdiscount</h3>
+            <ul>
+                <li>Analyse KPI et performance agents</li>
+                <li>Audit conformité process</li>
+                <li>Reporting & amélioration continue</li>
+            </ul>
         </div>
 
-        <div class="bento-card">
-            <h3>Déploiement Activités</h3>
-            <p>Set-up complet de 5
+        <div class="card">
+            <h3>Développeur Django</h3>
+            <ul>
+                <li>Développement d'applications internes</li>
+                <li>Systèmes de gestion de tickets</li>
+                <li>Authentification & gestion des rôles</li>
+                <li>Optimisation base de données</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section id="tech">
+    <h2 class="title-main">Technologies</h2>
+    <div class="tags">
+        <span class="tag">Python</span>
+        <span class="tag">Django</span>
+        <span class="tag">HTML/CSS</span>
+        <span class="tag">JavaScript</span>
+        <span class="tag">Active Directory</span>
+        <span class="tag">Windows Server</span>
+        <span class="tag">PowerShell</span>
+        <span class="tag">BIGFIX</span>
+    </div>
+</section>
+
+<section id="formation">
+    <h2 class="title-main">Formation</h2>
+    <div class="grid">
+        <div class="card">
+            <h3>BTS Réseaux & Télécommunications</h3>
+        </div>
+        <div class="card">
+            <h3>CISCO Discovery Niveau 1</h3>
+        </div>
+        <div class="card">
+            <h3>Baccalauréat Série D</h3>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p><strong>KASSI Koua Gerard</strong></p>
+    <p>IT Local & Développeur Django</p>
+    <p style="opacity:0.7; font-size:0.9rem;">
+        kassigerard28@gmail.com | Abidjan
+    </p>
+</footer>
+
+</body>
+</html>
