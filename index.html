@@ -49,24 +49,25 @@
         }
         .nav-links a:hover { color: var(--brand-blue); }
 
-        /* Hero Section avec Photo */
         .hero {
-            min-height: 90vh; display: flex; align-items: center; padding: 120px 8% 60px;
+            min-height: 100vh; display: flex; align-items: center; padding: 120px 8% 60px;
             background: radial-gradient(circle at 90% 10%, #dbeafe 0%, var(--bg-light) 40%);
         }
 
         .hero-container {
-            display: flex;
-            justify-content: space-between;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 50px;
             align-items: center;
             width: 100%;
-            gap: 40px;
         }
 
-        .hero-text { flex: 1; }
-        .hero-text h1 { font-size: clamp(2.8rem, 5vw, 4rem); font-weight: 800; line-height: 1.1; margin-bottom: 15px; }
-        .hero-text h2 { font-size: 1.5rem; color: var(--brand-blue); margin-bottom: 25px; font-weight: 700; letter-spacing: 1px;}
+        .hero-text h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 800; line-height: 1.1; margin-bottom: 15px; }
+        .hero-text h2 { font-size: 1.4rem; color: var(--brand-blue); margin-bottom: 15px; font-weight: 700; letter-spacing: 1px;}
         
+        .contact-info-hero { margin-bottom: 25px; font-weight: 700; color: var(--dark-navy); display: flex; gap: 20px; font-size: 0.9rem; }
+        .contact-info-hero i { color: var(--brand-blue); }
+
         .badge-main { 
             display: inline-flex; align-items: center; gap: 8px;
             padding: 6px 16px; background: #eff6ff; color: var(--brand-blue); 
@@ -74,22 +75,29 @@
             border: 1px solid #dbeafe;
         }
 
-        .hero-photo {
-            width: 300px;
-            height: 300px;
-            border-radius: 30px;
-            overflow: hidden;
-            box-shadow: var(--card-shadow);
-            border: 5px solid white;
+        .hero-image {
+            position: relative;
+            display: flex;
+            justify-content: center;
         }
 
-        .hero-photo img {
+        .profile-img-wrapper {
+            width: 380px;
+            height: 420px; /* Plus haut pour éviter de couper la tête */
+            border-radius: 24px;
+            overflow: hidden;
+            border: 8px solid var(--white);
+            box-shadow: var(--card-shadow);
+            background: #e2e8f0;
+        }
+
+        .profile-img-wrapper img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: top; /* Priorité au haut de l'image (la tête) */
         }
 
-        /* Marquee Section */
         .account-section { background: white; padding: 40px 0; border-top: 1px solid #f1f5f9; }
         .marquee { display: flex; overflow: hidden; user-select: none; gap: 40px; }
         .marquee-content { flex-shrink: 0; display: flex; justify-content: space-around; min-width: 100%; gap: 40px; animation: scroll 40s linear infinite; }
@@ -100,9 +108,7 @@
             font-weight: 700; font-size: 0.85rem; color: var(--text-gray);
             white-space: nowrap; transition: var(--transition);
         }
-        .account-item:hover { background: var(--brand-blue); color: white; transform: scale(1.05); }
 
-        /* Bento Grid */
         section { padding: 100px 8%; }
         .title-main { font-size: 2.8rem; margin-bottom: 60px; font-weight: 800; letter-spacing: -1px; }
         .title-main span { color: var(--brand-blue); position: relative; }
@@ -122,10 +128,7 @@
             padding: 6px 12px; border-radius: 8px; font-size: 0.7rem; font-weight: 700;
             margin: 4px 2px; transition: var(--transition); cursor: pointer;
         }
-        .tag:hover { background: var(--brand-blue); color: white; }
-        .highlight .tag { background: rgba(255,255,255,0.1); color: white; }
 
-        /* Modal */
         .modal {
             display: none; position: fixed; z-index: 1001; left: 0; top: 0;
             width: 100%; height: 100%; background: rgba(15, 23, 42, 0.8);
@@ -141,12 +144,14 @@
             display: inline-flex; align-items: center; gap: 12px;
             background: var(--brand-blue); color: white; padding: 18px 40px; 
             border-radius: 16px; text-decoration: none; font-weight: 700; 
-            margin-top: 30px; transition: var(--transition);
+            margin-top: 10px; transition: var(--transition);
         }
-        .btn-cv:hover { transform: scale(1.05); background: var(--brand-dark); box-shadow: 0 15px 30px rgba(0,98,255,0.3); }
 
         @media (max-width: 992px) { 
-            .hero-container { flex-direction: column-reverse; text-align: center; }
+            .hero-container { grid-template-columns: 1fr; text-align: center; }
+            .hero-image { order: -1; }
+            .contact-info-hero { justify-content: center; flex-wrap: wrap; }
+            .profile-img-wrapper { width: 100%; max-width: 320px; height: 350px; }
             .bento-grid { grid-template-columns: 1fr; } 
             .wide { grid-column: span 1; }
             .nav-links { display: none; }
@@ -158,7 +163,7 @@
 <div id="techModal" class="modal">
     <div class="modal-content">
         <span class="close-modal"><i class="fas fa-times"></i></span>
-        <h3 id="modal-title" style="margin-bottom: 20px; font-size: 1.8rem;">Expertise</h3>
+        <h3 id="modal-title" style="margin-bottom: 20px; font-size: 1.8rem;">Détails</h3>
         <p id="modal-text" style="color: var(--text-gray); font-size: 1.1rem; line-height: 1.8;"></p>
     </div>
 </div>
@@ -167,49 +172,58 @@
     <div class="logo-box">GK.</div>
     <ul class="nav-links">
         <li><a href="#experience">Parcours</a></li>
-        <li><a href="#tech">Compétences</a></li>
+        <li><a href="#tech">Expertises</a></li>
         <li><a href="#formation">Formation</a></li>
     </ul>
-    <a href="mailto:kassigerard28@gmail.com" style="text-decoration: none; font-weight: 800; color: var(--brand-blue); font-size: 0.8rem;">ME CONTACTER</a>
+    <div style="font-weight: 800; color: var(--brand-blue); font-size: 0.8rem;">IVIRIEN [cite: 2]</div>
 </nav>
 
 <section class="hero">
     <div class="hero-container">
-        <div class="hero-text" data-aos="fade-up">
+        <div class="hero-text" data-aos="fade-right">
             <div class="badge-main"><i class="fas fa-bolt"></i> DISPONIBLE POUR DE NOUVEAUX DÉFIS</div>
             <h1>KASSI <br><span style="color: var(--brand-blue);">Koua Gerard</span></h1>
             <h2>IT LOCAL SPECIALIST & FULLSTACK DJANGO</h2>
-            <p style="max-width: 650px; color: var(--text-gray); font-size: 1.2rem; margin-bottom: 20px;">
-                Expert en maintien opérationnel critique. Je pilote l'infrastructure de <strong>900+ collaborateurs</strong> tout en développant des solutions web haute performance.
+            
+            <div class="contact-info-hero">
+                <span><i class="fas fa-phone"></i> 07 79 36 25 29</span>
+                <span><i class="fas fa-phone"></i> 05 76 68 76 79</span>
+            </div>
+
+            <p style="max-width: 600px; color: var(--text-gray); font-size: 1.2rem; margin-bottom: 25px;">
+                Expert en maintien opérationnel critique. Je pilote l'infrastructure de <strong>900+ collaborateurs</strong> [cite: 1, 19] tout en développant des solutions web haute performance sous Django.
             </p>
-            <a href="mailto:kassigerard28@gmail.com" class="btn-cv">
-                <i class="fas fa-envelope"></i> Me contacter par Email
+            <a href="CV Kassi Koua Gerard.pdf" class="btn-cv">
+                <i class="fas fa-file-pdf"></i> Voir le CV complet (PDF)
             </a>
         </div>
-        <div class="hero-photo" data-aos="fade-left">
-            <img src="gerard.png" alt="KASSI Koua Gerard">
+        
+        <div class="hero-image" data-aos="fade-left">
+            <div class="profile-img-wrapper">
+                <img src="gerard.png" alt="KASSI Koua Gerard">
+            </div>
         </div>
     </div>
 </section>
 
 <div class="account-section">
-    <p style="text-align: center; font-weight: 700; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-gray); margin-bottom: 25px;">Clients & Écosystèmes</p>
+    <p style="text-align: center; font-weight: 700; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-gray); margin-bottom: 25px;">Écosystèmes & Expériences</p>
     <div class="marquee">
         <div class="marquee-content">
-            <div class="account-item">ORANGE BANK</div>
+            <div class="account-item">SHOWROOMPRIVE.COM [cite: 24]</div>
+            <div class="account-item">WEBHELP CÔTE D'IVOIRE [cite: 23]</div>
+            <div class="account-item">CH-PLAST </div>
+            <div class="account-item">ORANGE BANK AFRICA</div>
             <div class="account-item">NESPRESSO</div>
             <div class="account-item">BUREAU VERITAS</div>
-            <div class="account-item">SHOWROOMPRIVE.COM</div>
-            <div class="account-item">WEBHELP</div>
-            <div class="account-item">CH-PLAST</div>
         </div>
         <div class="marquee-content">
-            <div class="account-item">ORANGE BANK</div>
+            <div class="account-item">SHOWROOMPRIVE.COM [cite: 24]</div>
+            <div class="account-item">WEBHELP CÔTE D'IVOIRE [cite: 23]</div>
+            <div class="account-item">CH-PLAST </div>
+            <div class="account-item">ORANGE BANK AFRICA</div>
             <div class="account-item">NESPRESSO</div>
             <div class="account-item">BUREAU VERITAS</div>
-            <div class="account-item">SHOWROOMPRIVE.COM</div>
-            <div class="account-item">WEBHELP</div>
-            <div class="account-item">CH-PLAST</div>
         </div>
     </div>
 </div>
@@ -218,67 +232,77 @@
     <h2 class="title-main">Parcours <span>Professionnel</span></h2>
     <div class="bento-grid">
         <div class="bento-card wide highlight" data-aos="fade-right">
-            <h3 style="font-size: 1.6rem;">IT Local Specialist</h3>
-            <h4 style="color: #60a5fa; margin-bottom: 15px;">Depuis Juin 2018</h4>
-            <p style="opacity: 0.9; font-size: 1.05rem; margin-bottom: 20px;">
-                Support utilisateur, exploitation réseau IP et serveurs Windows. Gestion d'équipements Meraki, Fortinet et ASA. Maintenance d'infrastructure virtualisée et automatisation via IA.
+            <span class="tag" style="background: #22c55e; color: white;">EXPÉRIENCE MAJEURE</span>
+            <h3 style="margin-top: 20px; font-size: 1.6rem;">IT Local Specialist / Conseiller Client</h3>
+            <h4 style="color: #60a5fa; margin-bottom: 15px;">Webhelp / Concentrix | 2018 - Présent [cite: 23]</h4>
+            <p style="opacity: 0.9; font-size: 1.05rem;">
+                Gestion du SAV pour <strong>Showroomprive.com</strong>[cite: 24]. Support technique niveau 3, exploitation des réseaux IP (Meraki, Fortinet) et serveurs Windows/AD.
             </p>
-            <div class="tag">Active Directory</div> <div class="tag">Meraki</div> <div class="tag">Fortinet</div>
+            <div style="margin-top: 15px;">
+                <div class="tag">Support SAV</div> <div class="tag">Réseaux IP</div> <div class="tag">Active Directory</div>
+            </div>
         </div>
 
         <div class="bento-card" data-aos="fade-left">
-            <h3 style="color: var(--brand-blue);"><i class="fab fa-python"></i> Django Dev</h3>
-            <p style="margin: 15px 0;">Développement d'applications Web robustes et automatisation de processus métier.</p>
+            <span class="tag">MANAGEMENT</span>
+            <h3 style="margin-top: 10px;">Responsable Production</h3>
+            <h4 style="color: var(--brand-blue); font-size: 0.9rem;">CH-PLAST | 2017 - 2018 </h4>
+            <p style="font-size: 0.95rem; margin-top: 10px;">Coordination des travaux de finition, gestion des stocks et pointage des ouvriers[cite: 19, 20, 21].</p>
         </div>
 
         <div class="bento-card" data-aos="fade-up">
-            <span class="tag">PRODUCTION</span>
-            <h3 style="margin-top: 10px;">Responsable Production</h3>
-            <p>Gestion des flux et coordination des travaux chez CH-PLAST (2017-2018).</p>
+            <h3 style="color: var(--brand-blue);"><i class="fab fa-python"></i> Django Expert</h3>
+            <p style="margin: 15px 0;">Développement d'outils d'automatisation interne et de plateformes Web dynamiques.</p>
         </div>
     </div>
 </section>
 
 <section id="tech" style="background: white;">
-    <h2 class="title-main">Expertise <span>Technique</span></h2>
+    <h2 class="title-main">Expertises <span>Techniques</span></h2>
     <div class="bento-grid">
         <div class="bento-card">
-            <h4 style="margin-bottom: 15px;">Infrastructure</h4>
-            <div class="tag" onclick="showTech('Réseaux', 'Switch MERAKI, Fortinet, ASA, VRTX et protocoles TCP/IP.')">Réseaux IP</div> 
-            <div class="tag" onclick="showTech('Outils', 'BIGFIX, Solvnow, Freshdesk pour le support et le déploiement.')">ITSM & Tooling</div> 
+            <h4 style="margin-bottom: 15px;"><i class="fas fa-network-wired"></i> Réseaux & Sécurité</h4>
+            <div class="tag" onclick="showTech('Réseaux', 'Exploitation des équipements Meraki, Fortinet, ASA, VRTX et protocoles IP.')">Meraki / Fortinet</div> 
+            <div class="tag" onclick="showTech('Sécurité', 'Maintenance des accès internet, VPN et conformité PCI/DSS.')">VPN / Sécurité</div> 
         </div>
 
         <div class="bento-card">
-            <h4 style="margin-bottom: 15px;">Systèmes</h4>
-            <div class="tag" onclick="showTech('Windows', 'Administration Active Directory et exploitation de serveurs Windows.')">Active Directory</div> 
-            <div class="tag" onclick="showTech('Cloud', 'Maîtrise de l\'environnement Office 365 : Teams, SharePoint, OneDrive.')">Office 365</div> 
+            <h4 style="margin-bottom: 15px;"><i class="fas fa-server"></i> Systèmes & Outils</h4>
+            <div class="tag" onclick="showTech('Windows', 'Exploitation de serveurs Windows et administration Active Directory.')">Windows Server / AD</div> 
+            <div class="tag" onclick="showTech('Déploiement', 'Gestion de parc et déploiement via HCL BigFix.')">HCL BigFix</div> 
         </div>
 
         <div class="bento-card">
-            <h4 style="margin-bottom: 15px;">Dev & Sec</h4>
-            <div class="tag" onclick="showTech('Code', 'Automatisation de tâches via scripts Bash, PowerShell et Intelligence Artificielle.')">Automation / IA</div> 
-            <div class="tag" onclick="showTech('Sécurité', 'Maintenance des accès VPN et conformité aux normes de sécurisation.')">Cyber Sécurité</div> 
+            <h4 style="margin-bottom: 15px;"><i class="fas fa-code"></i> Automation & IA</h4>
+            <div class="tag" onclick="showTech('Code', 'Scripts Bash, PowerShell et développement Web Django.')">Python / Django</div> 
+            <div class="tag" onclick="showTech('IA', 'Optimisation des workflows de support par l\'intelligence artificielle.')">IA & Scripting</div> 
         </div>
     </div>
 </section>
 
 <section id="formation">
-    <h2 class="title-main">Formation <span>& Diplômes</span></h2>
+    <h2 class="title-main">Formation <span>Académique</span></h2>
     <div class="bento-grid">
         <div class="bento-card wide">
             <h3 style="font-size: 1.4rem;">BTS Réseaux Informatique et Télécoms</h3>
-            <p style="color: var(--text-gray);">Diplôme obtenu en 2017[cite: 11, 12].</p>
+            <p style="color: var(--text-gray);">Obtenu en 2017 — Groupe ITA / Azimut Technologie[cite: 11, 15].</p>
         </div>
         <div class="bento-card">
             <span class="tag">CERTIFICATION</span>
             <h3 style="margin-top: 10px;">Cisco Discovery 1</h3>
-            <p style="font-size: 0.9rem; color: var(--text-gray);">Programme CSSP validé au Groupe ITA[cite: 16, 17].</p>
+            <p style="font-size: 0.9rem; color: var(--text-gray);">Programme CSSP au Groupe ITA Ingenierie S.A[cite: 16, 17].</p>
         </div>
     </div>
 </section>
 
 <footer style="background: var(--dark-navy); color: white; padding: 60px 8%; text-align: center;">
-    <p>© 2026 — KASSI Koua Gerard [cite: 1]</p>
+    <h2 style="font-size: 1.5rem; margin-bottom: 10px;">KASSI Koua Gerard</h2>
+    <p style="opacity: 0.7; margin-bottom: 20px;">kassigerard28@gmail.com [cite: 4]</p>
+    <div style="font-weight: 700; margin-bottom: 30px; display: flex; justify-content: center; gap: 30px;">
+        <span><i class="fas fa-phone"></i> 07 79 36 25 29</span>
+        <span><i class="fas fa-phone"></i> 05 76 68 76 79</span>
+    </div>
+    <p style="font-size: 0.8rem; opacity: 0.4;">© 2026 — Expert IT & Fullstack Developer</p>
 </footer>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
