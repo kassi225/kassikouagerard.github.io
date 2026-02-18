@@ -27,7 +27,6 @@
             line-height: 1.6;
         }
 
-        /* --- NAVIGATION --- */
         nav {
             position: fixed;
             top: 0; width: 100%; height: 70px;
@@ -37,63 +36,65 @@
             border-bottom: 0.5px solid rgba(0,0,0,0.05);
         }
 
-        .logo-box img { height: 50px; width: auto; }
+        .logo-box img { height: 70px; width: auto; margin-top: 3mm; }
         .nav-links { display: flex; list-style: none; }
         .nav-links li { margin-left: 30px; }
         .nav-links a { text-decoration: none; color: var(--dark-navy); font-weight: 700; font-size: 0.9rem; text-transform: uppercase; }
 
-        /* --- HERO SECTION --- */
+        /* --- HERO SECTION AMÉLIORÉE --- */
         .hero {
             min-height: 100vh; display: flex; align-items: center; padding: 120px 8% 60px;
             background: radial-gradient(circle at 80% 20%, #e0e7ff 0%, var(--bg-light) 50%);
         }
-
-        .hero-container { display: flex; align-items: center; gap: 50px; width: 100%; }
+        .hero-container { display: flex; align-items: center; gap: 40px; width: 100%; }
         .hero-text { flex: 1; }
-        .hero-image { flex: 0 0 350px; position: relative; }
-        
-        .profile-img {
-            width: 100%; border-radius: 30px;
-            box-shadow: 20px 20px 60px rgba(0,0,0,0.1);
-            border: 5px solid white;
-            transition: 0.5s;
+        .hero-image-box { flex: 0 0 320px; text-align: center; }
+        .profile-pic { 
+            width: 100%; border-radius: 40px; border: 8px solid white; 
+            box-shadow: var(--card-shadow); transform: rotate(-2deg);
         }
 
-        .hero-text h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; color: var(--dark-navy); line-height: 1.1; }
-        .hero-text h2 { font-size: 1.5rem; color: var(--brand-blue); margin: 15px 0; font-weight: 700; }
-        
-        .contact-info { margin: 20px 0; display: flex; gap: 20px; flex-wrap: wrap; }
-        .contact-item { font-weight: 700; color: var(--dark-navy); text-decoration: none; display: flex; align-items: center; gap: 8px; }
-        
+        .hero-text h1 { font-size: clamp(2.5rem, 5vw, 4.2rem); font-weight: 800; color: var(--dark-navy); line-height: 1; }
+        .hero-text h2 { font-size: 1.6rem; color: var(--brand-blue); margin: 20px 0; font-weight: 700; }
+        .contact-bar { margin: 20px 0; display: flex; gap: 15px; flex-wrap: wrap; }
+        .contact-link { 
+            text-decoration: none; color: var(--dark-navy); font-weight: 800; 
+            background: white; padding: 10px 15px; border-radius: 10px; border: 1px solid #e2e8f0;
+            transition: 0.3s;
+        }
+        .contact-link:hover { border-color: var(--brand-blue); color: var(--brand-blue); }
+
         .badge-main {
             display: inline-block; padding: 8px 16px; background: #dbeafe; color: var(--brand-blue);
             border-radius: 50px; font-weight: 800; font-size: 0.8rem; margin-bottom: 20px;
         }
 
-        /* --- MODAL / POPUP SYSTEM --- */
+        /* --- SYSTEME POPUP (MODAL) --- */
         .modal {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(5px);
-            display: none; justify-content: center; align-items: center; z-index: 2000;
+            background: rgba(15, 23, 42, 0.9); backdrop-filter: blur(8px);
+            display: none; justify-content: center; align-items: center; z-index: 9999;
             padding: 20px;
         }
         .modal-content {
-            background: white; padding: 40px; border-radius: 24px; max-width: 600px; width: 100%;
-            position: relative; animation: modalIn 0.3s ease-out;
+            background: white; padding: 40px; border-radius: 30px; max-width: 650px; width: 100%;
+            position: relative; animation: slideUp 0.4s ease;
         }
-        @keyframes modalIn { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-        .close-modal { position: absolute; top: 20px; right: 20px; font-size: 1.5rem; cursor: pointer; color: var(--text-gray); }
+        @keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .close-btn { position: absolute; top: 20px; right: 20px; font-size: 2rem; cursor: pointer; color: var(--text-gray); }
+        .modal-body ul { margin-left: 20px; margin-top: 15px; }
+        .modal-body li { margin-bottom: 10px; }
 
-        /* --- CLIENT SCROLL --- */
+        /* --- REST DU DESIGN --- */
         @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
         .account-section { background: white; padding: 30px 0; overflow: hidden; border-bottom: 1px solid rgba(0,0,0,0.05); }
         .account-container { display: flex; width: max-content; animation: scroll 35s linear infinite; }
         .account-item { flex: 0 0 auto; margin: 0 15px; padding: 12px 30px; background: var(--bg-light); border-radius: 12px; font-weight: 800; color: var(--brand-blue); }
 
-        /* --- BENTO GRID --- */
         section { padding: 80px 8%; }
         .title-main { font-size: 2.5rem; margin-bottom: 50px; font-weight: 800; }
         .title-main span { color: var(--brand-blue); }
+
         .bento-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
         .bento-card {
             background: var(--white); padding: 40px; border-radius: 30px;
@@ -101,110 +102,142 @@
             transition: 0.4s; cursor: pointer;
         }
         .bento-card:hover { transform: translateY(-10px); border-color: var(--brand-blue); }
-        .wide { grid-column: span 2; }
-        .highlight { background: var(--dark-navy); color: white; }
-        .tag { display: inline-block; background: #f1f5f9; color: var(--dark-navy); padding: 6px 14px; border-radius: 8px; font-size: 0.75rem; font-weight: 700; margin: 4px; }
-        .highlight .tag { background: rgba(255,255,255,0.1); color: white; }
 
-        .btn-cv {
-            display: inline-block; background: var(--brand-blue); color: white; 
-            padding: 15px 35px; border-radius: 12px; text-decoration: none; 
-            font-weight: 700; margin-top: 20px; box-shadow: 0 10px 20px rgba(0,98,255,0.2);
-        }
+        .wide { grid-column: span 2; }
+        .full { grid-column: span 3; }
+        .highlight { background: var(--dark-navy); color: white; }
+
+        .tag { display: inline-block; background: #f1f5f9; color: var(--dark-navy); padding: 6px 14px; border-radius: 8px; font-size: 0.75rem; font-weight: 700; margin: 4px; border: 1px solid rgba(0,0,0,0.05); }
+        .highlight .tag { background: rgba(255,255,255,0.1); color: white; border: none; }
+
+        footer { background: var(--dark-navy); color: white; padding: 60px 8%; text-align: center; }
+        .btn-cv { display: inline-block; background: var(--brand-blue); color: white; padding: 15px 35px; border-radius: 12px; text-decoration: none; font-weight: 700; margin-top: 20px; box-shadow: 0 10px 20px rgba(0,98,255,0.2); }
 
         @media (max-width: 992px) { 
             .hero-container { flex-direction: column-reverse; text-align: center; }
-            .hero-image { flex: 0 0 250px; width: 250px; }
-            .contact-info { justify-content: center; }
-            .bento-grid { grid-template-columns: 1fr; } .wide { grid-column: span 1; } 
+            .hero-image-box { flex: 0 0 auto; width: 220px; }
+            .contact-bar { justify-content: center; }
+            .bento-grid { grid-template-columns: 1fr; } .wide, .full { grid-column: span 1; } 
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo-box">
-            <img src="logo.png" alt="GK LOGO"> 
-        </div>
+        <div class="logo-box"><img src="logo.png" alt="GK LOGO"></div>
         <ul class="nav-links">
             <li><a href="#experience">Parcours</a></li>
-            <li><a href="#tech">Expertise</a></li>
+            <li><a href="#tech">Expertise IT</a></li>
             <li><a href="#formation">Formation</a></li>
         </ul>
     </nav>
 
     <section class="hero">
         <div class="hero-container">
-            <div class="hero-text" data-aos="fade-right">
+            <div class="hero-text" data-aos="fade-up">
                 <div class="badge-main">EXPERT INFRASTRUCTURE & DÉVELOPPEMENT</div>
                 <h1>KASSI Koua Gerard</h1>
                 <h2>IT LOCAL SPECIALIST & DJANGO DEV</h2>
                 
-                <div class="contact-info">
-                    <a href="tel:0779362529" class="contact-item"><i class="fas fa-phone-alt"></i> 07 79 36 25 29</a>
-                    <a href="tel:0576687679" class="contact-item"><i class="fas fa-phone-alt"></i> 05 76 68 76 79</a>
+                <div class="contact-bar">
+                    <a href="tel:0779362529" class="contact-link"><i class="fas fa-phone"></i> 07 79 36 25 29</a>
+                    <a href="tel:0576687679" class="contact-link"><i class="fas fa-phone"></i> 05 76 68 76 79</a>
                 </div>
 
-                <p style="max-width: 600px; color: var(--text-gray); font-size: 1.1rem; margin-bottom: 30px;">
-                    Spécialiste du maintien opérationnel chez <strong>Concentrix</strong>. 
-                    Expertise sur 900+ postes et architectures cloud.
+                <p style="max-width: 600px; color: var(--text-gray); font-size: 1.1rem;">
+                    Spécialiste du maintien opérationnel chez <strong>Concentrix Corporate</strong>. Gestion d'un parc de <strong>900+ postes</strong> et concepteur de solutions IA.
                 </p>
-                <a href="CV Kassi Koua Gerard.pdf" class="btn-cv" target="_blank"><i class="fas fa-file-download"></i> Mon CV Complet</a>
+                <a href="CV Kassi Koua Gerard.pdf" class="btn-cv" target="_blank"><i class="fas fa-file-download"></i> Télécharger mon CV</a>
             </div>
-            <div class="hero-image" data-aos="fade-left">
-                <img src="gerard.png" alt="KASSI Koua Gerard" class="profile-img">
+            <div class="hero-image-box" data-aos="zoom-in">
+                <img src="gerard.png" alt="Gerard Kassi" class="profile-pic">
             </div>
         </div>
     </section>
 
     <div class="account-section">
-        <p style="text-align:center; font-weight: 700; font-size: 0.7rem; text-transform: uppercase; opacity: 0.5; margin-bottom: 15px;">Écosystème Clients Gérés</p>
+        <p style="font-weight: 600; font-size: 0.75rem; text-transform: uppercase; opacity: 0.5; margin-bottom: 15px; padding-left: 8%;">Comptes Clients & Activités Gérés</p>
         <div class="account-container">
-            <div class="account-item">NESPRESSO</div>
-            <div class="account-item">ORANGE BANK AFRICA</div>
-            <div class="account-item">BUREAU VERITAS</div>
-            <div class="account-item">CDISCOUNT</div>
-            <div class="account-item">FINARY</div>
-            <div class="account-item">ORANGE PRO</div>
-            <div class="account-item">PLEDGE</div>
-            <div class="account-item">COMUTITRE</div>
-            <div class="account-item">NESPRESSO</div>
-            <div class="account-item">ORANGE BANK AFRICA</div>
-            <div class="account-item">BUREAU VERITAS</div>
-            <div class="account-item">CDISCOUNT</div>
+            <div class="account-item">NESPRESSO</div><div class="account-item">ORANGE BANK AFRICA</div><div class="account-item">BUREAU VERITAS</div><div class="account-item">CDISCOUNT</div><div class="account-item">FINARY</div><div class="account-item">ORANGE PRO</div><div class="account-item">PLEDGE</div><div class="account-item">COMUTITRE</div><div class="account-item">CONFORAMA</div>
+            <div class="account-item">NESPRESSO</div><div class="account-item">ORANGE BANK AFRICA</div><div class="account-item">BUREAU VERITAS</div><div class="account-item">CDISCOUNT</div><div class="account-item">FINARY</div><div class="account-item">ORANGE PRO</div>
         </div>
     </div>
 
     <section id="experience">
         <h2 class="title-main">Parcours <span>Stratégique</span></h2>
         <div class="bento-grid">
-            <div class="bento-card wide highlight" onclick="openModal('exp1')">
+            <div class="bento-card wide highlight" onclick="showPopup('exp_it')">
                 <span class="tag" style="color: #4ade80;">POSTE ACTUEL</span>
-                <h3>IT Local - Concentrix Corporate</h3>
-                <p>Support N3 et gestion d'infrastructure critique...</p>
-                <small style="opacity: 0.6;">Cliquer pour les détails <i class="fas fa-plus-circle"></i></small>
+                <h3>IT Local - Concentrix Corporate (2 ans)</h3>
+                <p>Exploitation de l'infrastructure critique et support niveau 3 pour 900+ utilisateurs...</p>
+                <div class="tag">Active Directory</div> <div class="tag">Réseau IP</div>
             </div>
 
-            <div class="bento-card" onclick="openModal('exp2')">
+            <div class="bento-card" onclick="showPopup('exp_qc')">
                 <span class="tag">2021 - 2024</span>
                 <h3>Contrôleur qualité</h3>
-                <p>Pilotage conformité Cdiscount.</p>
-                <small style="color: var(--brand-blue);">Détails <i class="fas fa-plus-circle"></i></small>
+                <p>Pilotage de la qualité et la conformité sur <strong>Cdiscount</strong>.</p>
             </div>
-            
-            <div class="bento-card" onclick="window.open('https://github.com/kassi225/Cityprop','_blank')">
-                <span class="tag">PROJET PHARE</span>
+
+            <div class="bento-card" onclick="window.open('https://github.com/kassi225/Cityprop', '_blank')">
+                <span class="tag">DJANGO DEV</span>
                 <h3>CityProp Abidjan</h3>
-                <p>Full-stack Django & IA Integration.</p>
-                <i class="fab fa-github" style="font-size: 1.5rem; margin-top: 10px;"></i>
+                <p>Développement d'une solution Web d'entreprise. <i class="fab fa-github"></i></p>
             </div>
         </div>
     </section>
 
-    <div id="modal-container" class="modal" onclick="closeModal()">
+    <section id="tech" style="background: white;">
+        <h2 class="title-main">Expertise <span>Technique</span></h2>
+        <div class="bento-grid">
+            <div class="bento-card" onclick="showPopup('tech_infra')">
+                <h4 style="color: var(--brand-blue); margin-bottom: 15px;">INFRASTRUCTURE & RÉSEAU</h4>
+                <div class="tag">Switch MERAKI</div> <div class="tag">Fortinet</div>
+                <p style="font-size: 0.8rem; margin-top: 10px; color: var(--text-gray);">Cliquer pour voir les détails techniques</p>
+            </div>
+            <div class="bento-card" onclick="showPopup('tech_admin')">
+                <h4 style="color: var(--brand-blue); margin-bottom: 15px;">ADMINISTRATION & SÉCURITÉ</h4>
+                <div class="tag">Active Directory</div> <div class="tag">BIGFIX</div>
+                <p style="font-size: 0.8rem; margin-top: 10px; color: var(--text-gray);">Cliquer pour voir les détails d'admin</p>
+            </div>
+            <div class="bento-card" onclick="showPopup('tech_dev')">
+                <h4 style="color: var(--brand-blue); margin-bottom: 15px;">DÉVELOPPEMENT & GESTION</h4>
+                <div class="tag">Django</div> <div class="tag">Python</div>
+                <p style="font-size: 0.8rem; margin-top: 10px; color: var(--text-gray);">Cliquer pour voir mes stacks dev</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="formation">
+        <h2 class="title-main">Diplômes <span>& Certifications</span></h2>
+        <div class="bento-grid">
+            <div class="bento-card wide" style="display: flex; align-items: center; gap: 25px;">
+                <i class="fas fa-user-graduate" style="font-size: 3rem; color: var(--brand-blue);"></i>
+                <div>
+                    <h3>BTS Réseaux Informatique et Télécoms</h3>
+                    <p>Option : RIT (2016-2017). Formation pratique Administration Réseau et Système.</p>
+                </div>
+            </div>
+            <div class="bento-card">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
+                    <i class="fab fa-linkedin" style="font-size: 1.5rem; color: #0077b5;"></i>
+                    <span class="tag">RÉSEAU</span>
+                </div>
+                <h3>CCNA v1.1 : Théorie</h3>
+                <p style="color: var(--brand-blue);">Nov. 2025</p>
+            </div>
+            <div class="bento-card highlight" style="text-align: center;">
+                <i class="fas fa-certificate" style="font-size: 1.5rem; margin-bottom: 10px;"></i>
+                <h3>CISCO Discovery</h3>
+                <p>Niveau 1 obtenu.</p>
+            </div>
+        </div>
+    </section>
+
+    <div id="infoModal" class="modal" onclick="closePopup()">
         <div class="modal-content" onclick="event.stopPropagation()">
-            <span class="close-modal" onclick="closeModal()">&times;</span>
-            <div id="modal-body">
+            <span class="close-btn" onclick="closePopup()">&times;</span>
+            <div id="modalBody" class="modal-body">
                 </div>
         </div>
     </div>
@@ -218,38 +251,21 @@
     <script>
         AOS.init({ duration: 1000, once: true });
 
-        // Données des popups
-        const details = {
-            exp1: `
-                <h3 style="color:var(--brand-blue)">IT Local Specialist</h3>
-                <p><strong>Concentrix Corporate | 2 ans</strong></p><br>
-                <ul>
-                    <li>Gestion de l'infrastructure pour 900+ utilisateurs.</li>
-                    <li>Support technique niveau 3 (Systèmes & Réseaux).</li>
-                    <li>Mise en place de protocoles de sauvegarde/restauration.</li>
-                    <li>Configuration de switches Meraki et pare-feu Fortinet.</li>
-                    <li>Sécurisation des accès et gestion Active Directory.</li>
-                </ul>
-            `,
-            exp2: `
-                <h3 style="color:var(--brand-blue)">Contrôleur Qualité</h3>
-                <p><strong>Cdiscount | 3 ans</strong></p><br>
-                <ul>
-                    <li>Analyse de conformité des processus métiers.</li>
-                    <li>Suivi des KPIs de performance équipe.</li>
-                    <li>Reporting stratégique vers la direction.</li>
-                    <li>Optimisation des flux de traitement client.</li>
-                </ul>
-            `
+        const data = {
+            exp_it: `<h3>Expert IT - Concentrix</h3><p>Maintien en condition opérationnelle (MCO) :</p><ul><li>Support N3 pour 900+ collaborateurs.</li><li>Gestion des serveurs Windows (AD, DHCP, DNS).</li><li>Maintenance préventive et curative du parc hardware.</li><li>Test et déploiement des plans de reprise d'activité (PRA).</li></ul>`,
+            exp_qc: `<h3>Qualité - Cdiscount</h3><ul><li>Évaluation des performances des agents de traitement.</li><li>Analyse des retours clients et optimisation des process.</li><li>Animation de briefings qualité hebdomadaires.</li></ul>`,
+            tech_infra: `<h3>Infrastructure & Réseau</h3><ul><li><strong>Switching :</strong> Configuration Cisco et Meraki (VLANs, Routing).</li><li><strong>Firewall :</strong> Fortinet (règles de filtrage, VPN SSL/IPsec).</li><li><strong>Connectivité :</strong> Gestion des liaisons spécialisées et redondance fibre.</li></ul>`,
+            tech_admin: `<h3>Admin & Sécurité</h3><ul><li><strong>Windows Server :</strong> Gestion de forêts Active Directory complexes.</li><li><strong>Patch Management :</strong> Déploiement via HCL BigFix.</li><li><strong>Backup :</strong> Stratégie de sauvegarde sur NAS et Cloud.</li></ul>`,
+            tech_dev: `<h3>Dev & IA</h3><ul><li><strong>Django :</strong> Création d'outils internes et dashboards RH.</li><li><strong>Python :</strong> Scripts d'automatisation de rapports Excel/PDF.</li><li><strong>IA :</strong> Intégration d'API OpenAI/Llama pour l'aide au support.</li></ul>`
         };
 
-        function openModal(id) {
-            document.getElementById('modal-body').innerHTML = details[id];
-            document.getElementById('modal-container').style.display = 'flex';
+        function showPopup(key) {
+            document.getElementById('modalBody').innerHTML = data[key];
+            document.getElementById('infoModal').style.display = 'flex';
         }
 
-        function closeModal() {
-            document.getElementById('modal-container').style.display = 'none';
+        function closePopup() {
+            document.getElementById('infoModal').style.display = 'none';
         }
     </script>
 </body>
