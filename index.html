@@ -28,7 +28,6 @@
             overflow-x: hidden;
         }
 
-        /* --- NAVIGATION RESPONSIVE --- */
         nav {
             position: fixed;
             top: 0; width: 100%; height: 70px;
@@ -38,12 +37,11 @@
             border-bottom: 0.5px solid rgba(0,0,0,0.05);
         }
 
-        .logo-box img { height: 50px; width: auto; }
+        .logo-box { font-weight: 800; font-size: 1.5rem; color: var(--brand-blue); }
         .nav-links { display: flex; list-style: none; }
         .nav-links li { margin-left: 20px; }
         .nav-links a { text-decoration: none; color: var(--dark-navy); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; }
 
-        /* --- HERO SECTION --- */
         .hero {
             min-height: 100vh; display: flex; align-items: center; padding: 100px 5% 40px;
             background: radial-gradient(circle at 80% 20%, #e0e7ff 0%, var(--bg-light) 50%);
@@ -57,7 +55,7 @@
             width: 100%; 
         }
 
-        .hero-text h1 { font-size: clamp(2rem, 5vw, 4rem); font-weight: 800; color: var(--dark-navy); line-height: 1.1; }
+        .hero-text h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; color: var(--dark-navy); line-height: 1.1; }
         .hero-text h2 { font-size: clamp(1.2rem, 3vw, 1.8rem); color: var(--brand-blue); margin: 15px 0; font-weight: 700; }
         
         .contact-bar { margin: 20px 0; display: flex; gap: 10px; flex-wrap: wrap; }
@@ -67,13 +65,11 @@
             display: flex; align-items: center; gap: 8px;
         }
 
-        .hero-image-box { position: relative; display: flex; justify-content: center; }
         .profile-pic { 
             width: 100%; max-width: 350px; border-radius: 30px; border: 6px solid white; 
             box-shadow: var(--card-shadow); transform: rotate(2deg);
         }
 
-        /* --- POPUP (MODAL) --- */
         .modal {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(10px);
@@ -81,14 +77,12 @@
             padding: 20px;
         }
         .modal-content {
-            background: white; padding: 30px; border-radius: 20px; max-width: 500px; width: 100%;
+            background: white; padding: 30px; border-radius: 20px; max-width: 600px; width: 100%;
             position: relative; animation: pop 0.3s ease;
         }
-        @keyframes pop { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
         .close-btn { position: absolute; top: 15px; right: 20px; font-size: 1.8rem; cursor: pointer; }
 
-        /* --- BENTO GRID RESPONSIVE --- */
-        section { padding: 60px 5%; }
+        section { padding: 80px 5%; }
         .title-main { font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 30px; font-weight: 800; }
         .title-main span { color: var(--brand-blue); }
 
@@ -110,13 +104,11 @@
         .tag { display: inline-block; background: #f1f5f9; color: var(--dark-navy); padding: 5px 10px; border-radius: 6px; font-size: 0.7rem; font-weight: 700; margin: 3px; }
         .highlight .tag { background: rgba(255,255,255,0.1); color: white; }
 
-        /* --- CARROUSEL CLIENTS --- */
         @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        .account-section { background: white; padding: 20px 0; overflow: hidden; border-bottom: 1px solid rgba(0,0,0,0.05); }
-        .account-container { display: flex; width: max-content; animation: scroll 40s linear infinite; }
-        .account-item { flex: 0 0 auto; margin: 0 10px; padding: 10px 20px; background: var(--bg-light); border-radius: 10px; font-weight: 800; color: var(--brand-blue); font-size: 0.8rem; }
+        .account-section { background: white; padding: 25px 0; overflow: hidden; border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .account-container { display: flex; width: max-content; animation: scroll 30s linear infinite; }
+        .account-item { flex: 0 0 auto; margin: 0 15px; padding: 10px 25px; background: var(--bg-light); border-radius: 12px; font-weight: 800; color: var(--brand-blue); font-size: 0.9rem; letter-spacing: 1px; }
 
-        /* --- RESPONSIVE BREAKPOINTS --- */
         @media (max-width: 1024px) {
             .hero-container { grid-template-columns: 1fr; text-align: center; }
             .hero-image-box { order: -1; }
@@ -125,41 +117,39 @@
         }
 
         @media (max-width: 768px) {
-            .nav-links { display: none; } /* On cache les liens nav sur mobile pour simplifier */
+            .nav-links { display: none; }
             .bento-grid { grid-template-columns: 1fr; }
             .wide { grid-column: span 1; }
-            section { padding: 40px 5%; }
-            .profile-pic { max-width: 250px; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo-box"><img src="logo.png" alt="GK LOGO"></div>
+        <div class="logo-box">GK.</div>
         <ul class="nav-links">
             <li><a href="#experience">Parcours</a></li>
             <li><a href="#tech">Expertise</a></li>
-            <li><a href="#formation">Diplômes</a></li>
+            <li><a href="#formation">Certifications</a></li>
         </ul>
     </nav>
 
     <section class="hero">
         <div class="hero-container">
             <div class="hero-text" data-aos="fade-up">
-                <div class="tag" style="background:var(--brand-blue); color:white; padding:8px 15px;">EXPERT INFRASTRUCTURE & SÉCURITÉ</div>
+                <div class="tag" style="background:var(--brand-blue); color:white; padding:8px 15px;">EXPERT IT & SOLUTIONS DÉVELOPPEUR</div>
                 <h1>KASSI Koua Gerard</h1>
                 <h2>IT LOCAL SPECIALIST & DJANGO DEV</h2>
                 
                 <div class="contact-bar">
-                    <a href="tel:0779362529" class="contact-link"><i class="fas fa-phone"></i> 07 79 36 25 29</a>
-                    <a href="tel:0576687679" class="contact-link"><i class="fas fa-phone"></i> 05 76 68 76 79</a>
+                    <a href="tel:+2250768767979" class="contact-link"><i class="fas fa-phone"></i> 07 68 76 79 79</a>
+                    <a href="mailto:kassigerard28@gmail.com" class="contact-link"><i class="fas fa-envelope"></i> Email</a>
                 </div>
 
-                <p style="color: var(--text-gray); margin-bottom: 25px; font-size: 1.1rem;">
-                    Expert en maintien opérationnel (MCO) et conformité <strong>PCI DSS</strong>. Gestionnaire d'infrastructure hybride et développeur de solutions IA.
+                <p style="color: var(--text-gray); margin-bottom: 25px; font-size: 1.1rem; max-width: 600px;">
+                    Expert en maintien opérationnel (MCO) et conformité <strong>PCI DSS</strong>. Gestionnaire d'infrastructure hybride (900+ postes) et développeur d'applications métier sous <strong>Django/Python</strong>.
                 </p>
-                <a href="CV Kassi Koua Gerard.pdf" class="btn-cv" style="background:var(--brand-blue); color:white; padding:15px 30px; border-radius:10px; text-decoration:none; font-weight:700; display:inline-block;">TÉLÉCHARGER CV</a>
+                <a href="#" class="btn-cv" style="background:var(--brand-blue); color:white; padding:15px 30px; border-radius:12px; text-decoration:none; font-weight:700; display:inline-block; transition: 0.3s;">TÉLÉCHARGER MON CV</a>
             </div>
             <div class="hero-image-box" data-aos="zoom-in">
                 <img src="gerard.png" alt="KASSI Gerard" class="profile-pic">
@@ -169,8 +159,8 @@
 
     <div class="account-section">
         <div class="account-container">
-            <div class="account-item">NESPRESSO</div><div class="account-item">ORANGE BANK</div><div class="account-item">BUREAU VERITAS</div><div class="account-item">CDISCOUNT</div><div class="account-item">ORANGE PRO</div><div class="account-item">CONFORAMA</div><div class="account-item">FINARY</div>
-            <div class="account-item">NESPRESSO</div><div class="account-item">ORANGE BANK</div><div class="account-item">BUREAU VERITAS</div><div class="account-item">CDISCOUNT</div><div class="account-item">ORANGE PRO</div><div class="account-item">CONFORAMA</div><div class="account-item">FINARY</div>
+            <div class="account-item">CHRONOPOST (Audit)</div><div class="account-item">NESPRESSO</div><div class="account-item">COMUTITRE (Audit)</div><div class="account-item">BUREAU VERITAS</div><div class="account-item">CDISCOUNT</div><div class="account-item">ORANGE PRO</div><div class="account-item">FINARY</div>
+            <div class="account-item">CHRONOPOST (Audit)</div><div class="account-item">NESPRESSO</div><div class="account-item">COMUTITRE (Audit)</div><div class="account-item">BUREAU VERITAS</div><div class="account-item">CDISCOUNT</div><div class="account-item">ORANGE PRO</div><div class="account-item">FINARY</div>
         </div>
     </div>
 
@@ -178,16 +168,16 @@
         <h2 class="title-main">Parcours <span>Professionnel</span></h2>
         <div class="bento-grid">
             <div class="bento-card wide highlight" onclick="showPopup('exp_it')">
-                <span class="tag" style="color:#4ade80">ACTUEL</span>
-                <h3>IT Local - Concentrix Corporate</h3>
-                <p>Support N3, Monitoring <strong>PRTG</strong> et Conformité <strong>PCI DSS</strong>.</p>
-                <div class="tag">900+ Postes</div><div class="tag">Monitoring</div>
+                <span class="tag" style="color:#4ade80">POSTE ACTUEL</span>
+                <h3>IT Local & Expert MCO - Concentrix</h3>
+                <p>Gestion d'infrastructure critique, Audits et Conformité <strong>PCI DSS</strong>.</p>
+                <div class="tag">900+ Postes</div><div class="tag">Audits Internes</div><div class="tag">Facing Client</div>
             </div>
             <div class="bento-card" onclick="showPopup('exp_dev')">
-                <span class="tag">PROJET</span>
-                <h3>CityProp Abidjan</h3>
-                <p>Application Web Django & Automatisation IA.</p>
-                <i class="fab fa-github"></i>
+                <span class="tag">PROJET PHARE</span>
+                <h3>CityProp Solution</h3>
+                <p>Application Web Django complète pour la gestion des services internes.</p>
+                <i class="fab fa-python" style="font-size: 1.5rem; margin-top: 10px;"></i>
             </div>
         </div>
     </section>
@@ -197,18 +187,18 @@
         <div class="bento-grid">
             <div class="bento-card" onclick="showPopup('tech_secu')">
                 <h4 style="color:var(--brand-blue)">SÉCURITÉ & RÉSEAU</h4>
-                <div class="tag">PCI DSS</div> <div class="tag">VPN IPsec/SSL</div> <div class="tag">Fortinet</div>
-                <p style="font-size: 0.75rem; margin-top: 10px;">Cliquer pour les détails</p>
+                <div class="tag">PCI DSS</div> <div class="tag">Cisco CCNA</div> <div class="tag">Fortinet / ASA</div>
+                <p style="font-size: 0.75rem; margin-top: 15px;">Audit et sécurisation d'accès IP.</p>
             </div>
             <div class="bento-card" onclick="showPopup('tech_cloud')">
-                <h4 style="color:var(--brand-blue)">CLOUD & ADMIN</h4>
-                <div class="tag">Microsoft 365</div> <div class="tag">PRTG</div> <div class="tag">Active Directory</div>
-                <p style="font-size: 0.75rem; margin-top: 10px;">Cliquer pour les détails</p>
+                <h4 style="color:var(--brand-blue)">INFRA & MCO</h4>
+                <div class="tag">Active Directory</div> <div class="tag">BigFix</div> <div class="tag">Unitrends</div>
+                <p style="font-size: 0.75rem; margin-top: 15px;">Maintenance serveurs et virtualisation.</p>
             </div>
             <div class="bento-card" onclick="showPopup('tech_dev')">
-                <h4 style="color:var(--brand-blue)">DEV & TOOLS</h4>
-                <div class="tag">Django</div> <div class="tag">Python</div> <div class="tag">Git</div>
-                <p style="font-size: 0.75rem; margin-top: 10px;">Cliquer pour les détails</p>
+                <h4 style="color:var(--brand-blue)">DEV & IA</h4>
+                <div class="tag">Django / Python</div> <div class="tag">IA Solutions</div> <div class="tag">Agile</div>
+                <p style="font-size: 0.75rem; margin-top: 15px;">Automatisation et outils métiers.</p>
             </div>
         </div>
     </section>
@@ -218,16 +208,17 @@
         <div class="bento-grid">
             <div class="bento-card wide" style="border-left: 5px solid var(--brand-blue);">
                 <h3>BTS Réseaux Informatique & Télécoms</h3>
-                <p>Administration système et maintenance hardware.</p>
+                <p>Administration système et maintenance hardware (2017).</p>
             </div>
             <div class="bento-card highlight">
-                <span class="tag">NOUVEAU</span>
-                <h3>Gestion de Projet Agile</h3>
-                <p>Certification LinkedIn Learning (2026).</p>
+                <span class="tag">LINKEDIN</span>
+                <h3>Cisco CCNA (200-301)</h3>
+                <p>Installation et sécurisation des réseaux IP.</p>
             </div>
             <div class="bento-card">
-                <h3>CCNA v1.1</h3>
-                <p>Expertise Routing & Switching Cisco.</p>
+                <span class="tag">LINKEDIN</span>
+                <h3>Gestion de Projet Agile</h3>
+                <p>Pilotage de projets complexes et itératifs.</p>
             </div>
         </div>
     </section>
@@ -239,19 +230,20 @@
         </div>
     </div>
 
-    <footer style="background:var(--dark-navy); color:white; padding:40px 5%; text-align:center;">
-        <p><strong>KASSI Koua Gerard</strong> | Portfolio 2026</p>
+    <footer style="background:var(--dark-navy); color:white; padding:60px 5%; text-align:center;">
+        <p><strong>KASSI Koua Gerard</strong> | Portfolio Professionnel 2026</p>
+        <p style="font-size: 0.8rem; color: var(--text-gray); margin-top: 10px;">Expert IT Local @ Concentrix Abidjan</p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init();
         const info = {
-            exp_it: "<h3>IT Local Specialist</h3><ul><li>Gestion de la conformité <b>PCI DSS</b> pour les transactions bancaires.</li><li>Supervision réseau avec <b>PRTG</b>.</li><li>Support de niveau 3 sur 900+ postes de travail.</li><li>Administration <b>Microsoft 365</b> (Exchange, Teams, SharePoint).</li></ul>",
-            tech_secu: "<h3>Sécurité & Réseau</h3><ul><li>Mise en place de tunnels <b>VPN</b> sécurisés pour le télétravail.</li><li>Audit de sécurité selon les normes <b>PCI DSS</b>.</li><li>Configuration Switches Meraki et Pare-feu Fortinet.</li></ul>",
-            tech_cloud: "<h3>Cloud & Administration</h3><ul><li>Administration complète de <b>Microsoft 365</b>.</li><li>Monitoring temps réel avec <b>PRTG Network Monitor</b>.</li><li>Gestion centralisée via HCL BigFix.</li></ul>",
-            tech_dev: "<h3>Développement</h3><ul><li>Stack Python/Django pour outils métiers.</li><li>Intégration d'IA pour l'analyse de logs techniques.</li></ul>",
-            exp_dev: "<h3>CityProp Project</h3><ul><li>Plateforme immobilière développée sous Django.</li><li>Gestion de base de données PostgreSQL.</li><li>Déploiement continu.</li></ul>"
+            exp_it: "<h3>Expert IT Local - Concentrix</h3><ul><li>Gestion et maintenance de <b>900+ postes de travail</b>.</li><li>Conformité <b>PCI DSS</b> pour les activités bancaires.</li><li><b>Audits internes</b> pour Chronopost et Comutitre.</li><li><b>Facing Client :</b> sessions techniques pour déploiements CMS et solutions IT.</li><li>Gestion des incidents et support N1/N2/N3.</li></ul>",
+            tech_secu: "<h3>Sécurité & Réseau</h3><ul><li>Configuration <b>Meraki, Fortinet et Cisco ASA</b>.</li><li>Mise en place de tunnels VPN sécurisés.</li><li>Expertise certifiée <b>CCNA</b> (Installation/Sécurisation).</li><li>Monitoring et Hardening des infrastructures.</li></ul>",
+            tech_cloud: "<h3>Infrastructure & Administration</h3><ul><li>Administration <b>Active Directory</b> et serveurs Windows.</li><li>Déploiement de masse via <b>HCL BigFix</b>.</li><li>Stratégie de sauvegarde et restauration via <b>Unitrends</b>.</li><li>Gestion châssis Dell VRTX.</li></ul>",
+            tech_dev: "<h3>Développement & Innovation</h3><ul><li>Développement Fullstack avec <b>Django / Python</b>.</li><li>Automatisation de tâches via <b>PowerShell / Bash</b>.</li><li>Intégration de solutions d'<b>IA</b> pour optimiser la productivité IT.</li><li>Méthodologie <b>Agile</b> pour le set-up d'activités.</li></ul>",
+            exp_dev: "<h3>Application CITYPROP</h3><ul><li><b>Solution :</b> Application Web de gestion interne.</li><li><b>Stack :</b> Python, Django, PostgreSQL.</li><li><b>Impact :</b> Digitalisation complète des processus de service de l'entreprise.</li></ul>"
         };
 
         function showPopup(id) {
